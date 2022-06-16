@@ -1,0 +1,13 @@
+Area = ['bbox', -84667.14, -114260.0, 642940.97, 1163723.19]
+ClimateChangeType = absolute
+Collection = land-gcm
+DataFormat = csv
+EnsembleMemberSet = land-gcm
+JobLabel = global monthly av, temp
+Scenario = rcp85
+TemporalAverage = mall
+TimeSlice = 2000|2100
+Variable = tas
+
+Process Identifier = LS2_Subset_01
+Software Version = WPS-2.7.0-DP-2.7.0-CV-1.0.8
