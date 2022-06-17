@@ -7,8 +7,15 @@ import os
 # %% codecell
 print(os.listdir(os.getcwd()))
 # %% codecell
+#iterating over entire raw data directory
+list_file=[f for f in os.listdir("./3_Raw_Data/V1") if ".csv" in f]
+print(list_file)
+
+for f in list_file:
+    print(os.path.join("./3_Raw_Data/V1/",f))
+    df = pd.read_csv(os.path.join("./3_Raw_Data/V1/",f),skiprows=14)
 # reading the CSV file
-df = pd.read_csv('./3_Raw_Data/V1/subset_2022-06-07T09-05-05_ACCESS1-3-r1i1p1.csv',skiprows=14)
+#df = pd.read_csv('./3_Raw_Data/V1/subset_2022-06-07T09-05-05_ACCESS1-3-r1i1p1.csv',skiprows=14)
 
 #slicing to keep only values without xy coordinates (1st column and row)
 #cleaning intermediary rows
