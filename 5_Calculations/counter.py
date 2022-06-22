@@ -11,7 +11,7 @@ def var_counter(array3D,threshold=6,periodiser=20):
     for i in range(3):
         idx_1 = periodiser*i
         idx_2 = periodiser*(i+1)
-        np.add(counter,exc_array[idx_1:idx_2,:,:].astype(int))
+        np.add(counter,exc_array[idx_1:idx_2,:,:].astype(int), out=counter)
 
     return counter
 
