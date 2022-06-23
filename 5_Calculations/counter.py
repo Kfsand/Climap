@@ -6,31 +6,30 @@ import numpy as np
 def var_counter(array3D,threshold=6,periodiser=20):
 
     exc_array=islarger(array3D,threshold)
-    counter=np.empty((12*periodiser,np.size(array3D,1),np.size(array3D,2)))
-    print(counter.shape)
+    counter=np.zeros((12*periodiser,np.size(array3D,1),np.size(array3D,2)))
 
     for i in range(5):
+        'TODO: set range according to shape and chosen periosider'
         #1199//(periodiser*12)
-        print(i)
         zeros=np.zeros(counter.shape)
         idx_1 = periodiser*12*i
         idx_2 = periodiser*12*(i+1)
-        slice=exc_array[idx_1:idx_2,:,:]
+        slice=exc_array[idx_1:idx_2,:,:].astype(int)
+       
 
         if counter.shape== slice.shape:
-            print(slice.shape)
-            np.add(counter,slice.astype(int))
+            np.add(counter,slice,out=counter)
             
         else:
             'TODO: fix last iteration'
-            continue
-            resized=exc_array[idx_1:idx_2,:,:].resize(counter.shape)
+            'compter la diff sur le bon axe, créer un array de 0, ajouter avec .stack'
             print(resized.shape)
-            np.add(counter,resized.astype(int))
+            np.add(counter,resized,out=counter)
         
 
-    return counter
+        counter=counter.astype(int)
 
+    return counter
 
     
 
