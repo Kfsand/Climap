@@ -1,37 +1,41 @@
 import numpy as np
+import math
 
-#function meant to count number of occurances of variable exceeding given threshold in a specific timerange
 
+def var_counter(array3D,threshold=9,periodiser=20):
 
-def var_counter(array3D,threshold=6,periodiser=20):
+    #function takes in an array, a theshold and a year period -
+    # returns aryay of ints = nb of months the values 
+    # in the argument array exceeded the threshold during the specified time period.
 
+    d1=np.size(array3D,0)
+    d2=np.size(array3D,1)
+    d3=np.size(array3D,2)
+
+    nyears=periodiser
+    nmonths=12*nyears
+
+    #computing bool array of values exceeding threshold (=>)
     exc_array=islarger(array3D,threshold)
-    counter=np.zeros((12*periodiser,np.size(array3D,1),np.size(array3D,2)))
+   
+   #initialising return array
+    sum_array=np.empty((math.ceil(d1/nmonths),d2,d3))
 
-    for i in range(5):
-        'TODO: set range according to shape and chosen periosider'
-        #1199//(periodiser*12)
-        zeros=np.zeros(counter.shape)
-        idx_1 = periodiser*12*i
-        idx_2 = periodiser*12*(i+1)
-        slice=exc_array[idx_1:idx_2,:,:].astype(int)
-       
-
-        if counter.shape== slice.shape:
-            np.add(counter,slice,out=counter)
-            
-        else:
-            'TODO: fix last iteration'
-            'compter la diff sur le bon axe, créer un array de 0, ajouter avec .stack'
-            print(resized.shape)
-            np.add(counter,resized,out=counter)
+    for i in range(math.ceil(d1/nmonths)):
         
+        #slicing appropriate time period from bool array
+        idx_1 = nmonths*i
+        idx_2 = nmonths*(i+1)
+        slice=exc_array[idx_1:idx_2,:,:].astype(int)
 
-        counter=counter.astype(int)
+        #sum of bool as ints within selected time period
+        sum_slice=np.sum(slice,axis=0, dtype=np.int32)
+        
+        sum_array[i,:,:]=sum_slice
+       
+    return sum_array
 
-    return counter
 
-    
 
 def islarger (array3D, threshold):
 
