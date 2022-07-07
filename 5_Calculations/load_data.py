@@ -5,7 +5,7 @@ import pandas as pd
 import csv
 import os
 
-def load(path="../3_Raw_Data/V2"):
+def loadnp(path="../3_Raw_Data/V2"):
     # create list of files names to open, every .csv file in directory
     list_file=[f for f in os.listdir(path) if ".csv" in f]
     #initialising 4D array storing all values
@@ -34,7 +34,5 @@ def load(path="../3_Raw_Data/V2"):
 
 
     #intitialising common coordinate vectors from last df read
-    [xcoord, ycoord]=[df.iloc[1,1:].to_numpy(),df.iloc[2:24,0].to_numpy()]
-    'NOTE:non functional coordinate conversion to int: remained floats'
-    #[xcoord, ycoord]=[df.iloc[1,1:].to_numpy(dtype=np.int32),df.iloc[2:24,0].to_numpy(dtype=np.int32)]
+    [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:24,0].map(lambda x : int(float(x)) ).to_numpy()]
     return [xcoord, ycoord, array4D]
