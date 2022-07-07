@@ -1,8 +1,11 @@
+import numpy as np
 from scipy import stats
 from scipy.stats import norm
 
 
-def norm_test(array4D, Dcrit=0.25):
+def norm_test(array4D, Dcrit=0.25, timeaxis=1,xaxis=2,yaxis=3):
+
+    array4D=array4D
 
     '''H0:  the data are normally distributed
       Ha:  the data are not normally distributed
@@ -13,10 +16,11 @@ def norm_test(array4D, Dcrit=0.25):
     total=0
     fitted=0
     fails=0
+    stat_array=np.empty([np.shape(array4D)[timeaxis],np.shape(array4D)[xaxis],np.shape(array4D)[yaxis]],dtype=object)
+    mstats=np.empty([4,1])
 
-    array4D=array4D
+    
     'TODO: create stat_array with shape 2xarray4D.shape(2),3,4'
-    stat_array=[]
 
     dist = getattr(stats, 'norm')
 
@@ -33,7 +37,7 @@ def norm_test(array4D, Dcrit=0.25):
                     fails+=1
                 else:
                     fitted+=1
-                'TODO: append statistic and pvalue for each element +return statarray to write in file'
-                #stat_array.append([])
+                mstats=[parameters[0],parameters[1],result[0],result[1]]
+                stat_array[i,j,k]=mstats
                 total+=1
-    return [total,fitted,fails,Dcrit]
+    return [total,fitted,fails,Dcrit,stat_array]
