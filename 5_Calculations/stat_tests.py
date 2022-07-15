@@ -2,8 +2,23 @@ import numpy as np
 from scipy import stats
 from scipy.stats import norm
 
+def run_stats(array4D,path,KStest=True,stats=True,tp_90=True,result='p_90'):
+    if KStest==True:
+        test_results=norm_test(array4D,resultpath=path)
+        if result=='KS':
+            return test_results
 
-def norm_test(array4D, Dcrit=0.25, timeaxis=1,xaxis=2,yaxis=3):
+    if stats==True:
+        stats=av_min_max(array4D)
+        if result=='stats':
+            return stats
+    
+    if tp_90==True:
+        results_p_90=p_90(array4D,resultpath=path)
+        if result=='p_90':
+            return results_p_90
+
+def norm_test(array4D, Dcrit=0.25, timeaxis=1,xaxis=2,yaxis=3,resultpath='../6_Results/data/',Save=True,Display=True):
 
     array4D=array4D
 
@@ -24,9 +39,9 @@ def norm_test(array4D, Dcrit=0.25, timeaxis=1,xaxis=2,yaxis=3):
 
     dist = getattr(stats, 'norm')
 
-    for i in range(1199):
-        for j in range(22):
-            for k in range(13):
+    for i in range(935):
+        for j in range(23):
+            for k in range(14):
                 slice=array4D[:,i,j,k]
                 #outputs are mean and std dev
                 parameters = dist.fit(slice)
@@ -40,4 +55,25 @@ def norm_test(array4D, Dcrit=0.25, timeaxis=1,xaxis=2,yaxis=3):
                 mstats=[parameters[0],parameters[1],result[0],result[1]]
                 stat_array[i,j,k]=mstats
                 total+=1
-    return [total,fitted,fails,Dcrit,stat_array]
+    
+    test_results=[total,fitted,fails,Dcrit,stat_array]
+    #Diplaying results
+    if Display==True:
+        print(str(fitted)+" fit a normal distribution out of : "+str(total)+" with critical value of: "+str(Dcrit))
+        print("success rate: " +str(fitted/total))
+    
+    #Saving results
+    if Save==True:
+        np.savez(resultpath+'/norm_results',test_results)
+
+    return test_results
+
+def av_min_max(array4D,axis=0):
+    return [np.mean(array4D,axis=0), np.amax(array4D,axis=0), np.amin(array4D,axis=0)]
+
+def p_90(array4D,axis=0,resultpath='../6_Results/data/',Save=True):
+    p90_array=np.percentile(array4D,90,axis=axis)
+
+    if Save==True:
+        np.savez(resultpath+'/p90',p90_array)
+    return p90_array

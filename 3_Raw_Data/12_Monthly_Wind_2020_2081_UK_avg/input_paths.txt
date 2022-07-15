@@ -1,0 +1,12 @@
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/01/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/04/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/05/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/06/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/07/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/08/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/09/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/10/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/11/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/12/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/13/sfcWind/mon/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-rcm/uk/country/rcp85/15/sfcWind/mon/v20181122/
