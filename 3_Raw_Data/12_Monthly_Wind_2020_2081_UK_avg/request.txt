@@ -1,0 +1,12 @@
+Area = country|United Kingdom
+ClimateChangeType = absolute
+Collection = land-rcm
+DataFormat = csv
+EnsembleMemberSet = land-rcm
+JobLabel = 12_Monthly_Maxtemp_2020_2081_UK
+TemporalAverage = mall
+TimeSlice = 2020|2081
+Variable = sfcWind
+
+Process Identifier = LS3_Subset_01
+Software Version = WPS-2.7.0-DP-2.7.0-CV-1.0.8
