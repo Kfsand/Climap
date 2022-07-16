@@ -53,7 +53,8 @@ def PointstoGeojson(latlonarray,foldername="new",fname='dataset.geojson'):
         json.dump(geojson, output_file, indent=2)
 
 def buildsqrBNG(xcoord,ycoord,iter_size=22):
-    
+    #returns array of coordinates 8lat long) defining grid squares
+
     #coordinate arrays to be passed in BNG coordinates
     x=xcoord
     y=ycoord
