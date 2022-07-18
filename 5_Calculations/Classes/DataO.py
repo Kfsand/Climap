@@ -3,13 +3,12 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from scipy.stats import norm
-
-import csv
 import os
+import math
 
 class DataObject:
 
-    ##### class attributes ####
+    ##### CLASS ATTRIBUTES ####
     # title : (string)
     # varname : (string)
     # sres : (int)
@@ -24,6 +23,10 @@ class DataObject:
     # KS : (bool)
     # stats : (list)
     # p90_array : (np.array)
+    # threshold: (int)
+    # counter_array: (np.array shape= blocks,ydim.xdim)
+
+    'TODO: create flat_prop_arrays, create counter at this level'
 
 
     def __init__(self,title,varname,sres,tres,fdname,fdpath,respath,rows_block=25,rows_data=23,columns_data=14,):
@@ -154,5 +157,51 @@ class DataObject:
         if Save==True:
             np.savez(self.respath+'/p90',p90_array)
         return p90_array
+
+    def flat_array(self,array):
+        #flattens an array one column after another
+        # to follow features which are squares buit colmn-wise (iteration through y then y)
+
+        flatarray=array.flatten('F')
+        return flatarray
+
+    def set_threshold(self,threshold):
+        self.threshold=threshold
+
+    def counter(self,periodiser=20):
+         #function takes in an array, a theshold and a year period -
+        # returns array of ints = nb of months the values 
+        # in the argument array exceeded the threshold during the specified time period.
+        
+        d1=np.size(self.p90_array,0)
+        self.counter_array=np.empty(self.p90_array.shape)
+
+        if self.tres=='monthly':
+            nmonths=12*periodiser
+
+        #computing bool array of values exceeding threshold (=>)
+        exc_array=self.islarger(self.p90_array,self.threshold)
+
+        stacker=[]
+
+        for i in range(math.ceil(d1/nmonths)):
+        
+            #slicing appropriate time period from bool array
+            idx_1 = nmonths*i
+            idx_2 = nmonths*(i+1)
+            slice=exc_array[idx_1:idx_2,:,:].astype(int)
+
+            #sum of bool as ints within selected time period
+            stacker.append(np.sum(slice,axis=0, dtype=np.int32))
+            
+        self.counter_array=np.stack(stacker,axis=0)
+
+    def islarger (self,array3D, threshold):
+        #returns boolean matrix of indexes meeting condition
+
+        threshold=threshold
+        islarger=array3D>=threshold
+    
+        return islarger    
 
 
