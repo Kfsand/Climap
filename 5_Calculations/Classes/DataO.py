@@ -40,7 +40,8 @@ class DataObject:
         self.respath=respath+'/'+title
 
         #creating result directory
-        os.mkdir(self.respath)
+        if not os.path.exists(self.respath):
+            os.mkdir(self.respath)
     
         #loading data
         [self.xcoord, self.ycoord, self.untreated_array]=self.loadnp(fdpath,rows_block=rows_block,rows_data=rows_data,columns_data=columns_data)   
