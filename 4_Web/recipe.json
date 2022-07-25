@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "layers": {
+      "Maxtemp_results": {
+        "source": "mapbox://tileset-source/kfsand/Maxtemp_results",
+        "minzoom": 4,
+        "maxzoom": 12
+      }
+    }
+  }
