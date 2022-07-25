@@ -4,8 +4,21 @@ import numpy as np
 import pandas as pd
 import json
 from Classes import DataO
+import os
 
 class MapObject:
+
+    ##### CLASS ATTRIBUTES ####
+    # name : (string)
+    # dlist : (list of DataObjects)
+    # dnames : (list of strings) DataObject names contained in dlist
+    # respath : (string) path for result saving
+    # sqrcoords : (?) lat lon coordinates for squares mapping
+    # geojson : (dict) data in geojson format
+    # KS : (bool)
+    # stats : (list)
+    # p90_array : (np.array)
+    # threshold: (int)
 
 
     def __init__(self,name,dataobject,respath):
@@ -38,6 +51,7 @@ class MapObject:
         #returns array of coordinates (lat long) defining grid squares
 
         #coordinate arrays to be passed in BNG coordinates
+        assert (xcoord.size,ycoord.size)==(153,244), "coordinate arrays passed from object are not correct size"
         x=xcoord
         y=ycoord
 
@@ -87,18 +101,26 @@ class MapObject:
             
             self.geojson["features"].append(feature)
     
+    def build_props(self):
+        for variable in self.dlist:
+            print(variable.fcounter_array.size)
+            self.geojson_props(variable.title,variable.fcounter_array)
+
     def geojson_props(self,vartitle,flat_prop_array):
         ##add property to geojson features, expect title of property 
         # and flat property array aligned with features
 
         i=0
         for feature in self.geojson['features']:
-            feature["properties"][vartitle+" - excess days"]=flat_prop_array[i]
+            feature["properties"][vartitle+" - excess days"]=int(flat_prop_array[i])
+            #feature["properties"][vartitle+" - excess days"]=i
             i+=1
 
-        
     def geojson_write(self,index):
         output_filename = self.respath+"/"+str(index)+'_squares.geojson'
+        #creating result directory
+        if not os.path.exists(self.respath):
+            os.mkdir(self.respath)
         with open(output_filename, 'w') as output_file:
             json.dump(self.geojson, output_file, indent=2)
 

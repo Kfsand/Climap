@@ -16,6 +16,11 @@ class DataObject:
     # fdname : (path)
     # fdpath : (path)
     # respath : (path)
+    # members: (int)
+    # total_rows: (int),
+    # block_rows: (int),
+    # data_rows: (int),
+    # data_columns: (int)
     # xcoord : (np.array)
     # ycoord : (np.array)
     # untreated_array : (np.array)
@@ -25,11 +30,14 @@ class DataObject:
     # p90_array : (np.array)
     # threshold: (int)
     # counter_array: (np.array shape= blocks,ydim.xdim)
+    # fcounter_array: (np.array shape= )
+
 
     'TODO: create flat_prop_arrays, create counter at this level'
 
 
-    def __init__(self,title,varname,sres,tres,fdname,fdpath,respath,rows_block=25,rows_data=23,columns_data=14,):
+    def __init__(self,title,varname,sres,tres,fdname,fdpath,respath,
+                members=12,total_rows=58794,block_rows=246,data_rows=244,data_columns=153):
 
         #title: name of variable ex: MaxTemp
         self.title=title
@@ -38,16 +46,20 @@ class DataObject:
         self.tres=tres
         self.fdname=fdname
         self.respath=respath+'/'+title
+        self.members=members
+        self.total_rows=total_rows
+        self.block_rows=block_rows
+        self.data_rows=data_rows
+        self.data_columns=data_columns
 
         #creating result directory
         if not os.path.exists(self.respath):
             os.mkdir(self.respath)
     
         #loading data
-        [self.xcoord, self.ycoord, self.untreated_array]=self.loadnp(fdpath,rows_block=rows_block,rows_data=rows_data,columns_data=columns_data)   
+        [self.xcoord, self.ycoord, self.untreated_array]=self.loadnp(fdpath)   
 
-    def loadnp(self,path,rows_block=25,rows_data=23,columns_data=14):
-
+    def loadnp(self,path):
 
         # create list of files names to open, every .csv file in directory
         list_file=[f for f in os.listdir(path) if ".csv" in f]
@@ -55,7 +67,7 @@ class DataObject:
         array4D=[]
 
         #list of column names, needed to force correct shape of df
-        col_names=["x"+str(i) for i in range(columns_data+1)]
+        col_names=["x"+str(i) for i in range(self.data_columns+1)]
 
         #opening and reading each consecutive file
         for f in list_file:
@@ -63,12 +75,9 @@ class DataObject:
             #initialising 3D array storing values of each file
             array3D=[]
 
-            'NOTE: change range to nb blocks=nbrowstotal/bn rows block'
-            rows_block=rows_block
-            rows_data=rows_data
-            for i in range(935):
-                idx_1 = rows_data*i+i*2+2
-                idx_2 = rows_data*(i+1)+2*(i)+2
+            for i in range(math.ceil(self.total_rows/self.block_rows)):
+                idx_1 = self.data_rows*i+i*2+2
+                idx_2 = self.data_rows*(i+1)+2*(i)+2
                 array3D.append(df.iloc[idx_1:idx_2, 1:].to_numpy())
             
             array3D=np.stack(array3D)
@@ -79,7 +88,7 @@ class DataObject:
 
 
         #intitialising common coordinate vectors from last df read
-        [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:24,0].map(lambda x : int(float(x)) ).to_numpy()]
+        [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
         return [xcoord, ycoord, array4D]
 
     def run_stats(self,KStest=True,stats=True,tp_90=True):
@@ -98,15 +107,22 @@ class DataObject:
         if tp_90==True:
             self.p90_array=self.p_90()
 
-    def norm_test(self, Dcrit=0.25, timeaxis=1,xaxis=2,yaxis=3,Save=True,Display=False):
+    def norm_test(self,timeaxis=1,xaxis=2,yaxis=3,Save=True,Display=False):
 
         array4D=self.untreated_array
 
         '''H0:  the data are normally distributed
         Ha:  the data are not normally distributed
         Significance level:  α = 0.05
-        Critical value:  Dcrit=0.25    
+        Critical value:  Dcrit=0.25 for 28 members
+                         Dcrit=0.37543 for 12 members
+
         Critical region:  Reject H0 if D > Dcrit'''
+
+        if self.members==12:
+            Dcrit=0.37542
+        if self.members==28:
+            Dcrit=0.25
 
         total=0
         fitted=0
@@ -114,14 +130,11 @@ class DataObject:
         stat_array=np.empty([np.shape(array4D)[timeaxis],np.shape(array4D)[xaxis],np.shape(array4D)[yaxis]],dtype=object)
         mstats=np.empty([4,1])
 
-        
-        'TODO: create stat_array with shape 2xarray4D.shape(2),3,4'
-
         dist = getattr(stats, 'norm')
 
-        for i in range(935):
-            for j in range(23):
-                for k in range(14):
+        for i in range(math.ceil(self.total_rows/self.block_rows)):
+            for j in range(self.data_rows):
+                for k in range(self.data_columns):
                     slice=array4D[:,i,j,k]
                     #outputs are mean and std dev
                     parameters = dist.fit(slice)
@@ -174,9 +187,13 @@ class DataObject:
         # returns array of ints = nb of months the values 
         # in the argument array exceeded the threshold during the specified time period.
         
+        assert self.p90_array.shape==(239,244,153), "p90_array passed on doesn't have correct shape"
+        
+        #setting first dimension as total number of months in array
         d1=np.size(self.p90_array,0)
         self.counter_array=np.empty(self.p90_array.shape)
-
+        
+        #number of months in block of periodiser years
         if self.tres=='monthly':
             nmonths=12*periodiser
 
@@ -196,6 +213,9 @@ class DataObject:
             stacker.append(np.sum(slice,axis=0, dtype=np.int32))
             
         self.counter_array=np.stack(stacker,axis=0)
+        self.fcounter_array=self.flat_array(self.counter_array)
+
+        assert self.counter_array.shape==(math.ceil(d1/nmonths),244,153), "produced counter array doesn not have correct shape"
 
     def islarger (self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
@@ -204,5 +224,23 @@ class DataObject:
         islarger=array3D>=threshold
     
         return islarger    
+    
+    def display_results(self):
 
+        [total,fitted,fails,Dcrit,stat_array]=self.KS_results
+        print("\n KS test results for Weather Variable: "+self.varname)
+        print(str(fitted)+" fit a normal distribution out of : "+str(total)+" with critical value of: "+str(Dcrit))
+        print("success rate: " +str(fitted/total))
 
+    def KS_passed(self,setting=0.99):
+        [total,fitted,fails,Dcrit,stat_array]=self.KS_results
+
+        if fitted/total >= setting:
+
+            self.KS=True
+        else:
+            self.KS=False
+
+    def max_val(self):
+        #computes maximum accross time dimension
+        self.max_array=np.amax(self.untreated_array,axis=0)
