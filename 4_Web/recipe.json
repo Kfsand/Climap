@@ -4,7 +4,7 @@
       "Maxtemp_results": {
         "source": "mapbox://tileset-source/kfsand/Maxtemp",
         "minzoom": 2,
-        "maxzoom": 12
+        "maxzoom": 6
       }
     }
   }

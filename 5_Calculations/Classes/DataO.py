@@ -37,7 +37,7 @@ class DataObject:
 
 
     def __init__(self,title,varname,sres,tres,fdname,fdpath,respath,
-                members=12,total_rows=58794,block_rows=246,data_rows=244,data_columns=153):
+                members=12,total_rows=58794,block_rows=246,data_rows=243,data_columns=153):
 
         #title: name of variable ex: MaxTemp
         self.title=title
@@ -51,13 +51,14 @@ class DataObject:
         self.block_rows=block_rows
         self.data_rows=data_rows
         self.data_columns=data_columns
+        self.gap=3
 
         #creating result directory
         if not os.path.exists(self.respath):
             os.mkdir(self.respath)
     
         #loading data
-        [self.xcoord, self.ycoord, self.untreated_array]=self.loadnp(fdpath)   
+        [self.xcoord, self.ycoord, self.untreated_array, self.table]=self.loadnp(fdpath)   
 
     def loadnp(self,path):
 
@@ -76,10 +77,14 @@ class DataObject:
             array3D=[]
 
             for i in range(math.ceil(self.total_rows/self.block_rows)):
-                idx_1 = self.data_rows*i+i*2+2
-                idx_2 = self.data_rows*(i+1)+2*(i)+2
-                array3D.append(df.iloc[idx_1:idx_2, 1:].to_numpy())
-            
+                
+                idx_1 = self.block_rows*i+2
+                idx_2 = idx_1+self.data_rows-1
+                array3D.append(df.iloc[idx_1:idx_2+1, 1:].to_numpy())
+                table=df.iloc[idx_1:idx_2+1, 1:].to_numpy()
+        
+        #[xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
+        #return [xcoord, ycoord, array4D, table]
             array3D=np.stack(array3D)
             array4D.append(array3D)
         array4D=np.stack(array4D)
@@ -89,8 +94,7 @@ class DataObject:
 
         #intitialising common coordinate vectors from last df read
         [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
-        print(array4D.shape)
-        return [xcoord, ycoord, array4D]
+        return [xcoord, ycoord, array4D, table]
 
     def run_stats(self,KStest=True,stats=True,tp_90=True):
         if KStest==True:
@@ -189,7 +193,7 @@ class DataObject:
         # returns array of ints = nb of months the values 
         # in the argument array exceeded the threshold during the specified time period.
         
-        assert self.p90_array.shape==(239,244,153), "p90_array passed on doesn't have correct shape"
+        assert self.p90_array.shape==(239,self.data_rows,self.data_columns), "p90_array passed on doesn't have correct shape"
         
         #setting first dimension as total number of months in array
         d1=np.size(self.p90_array,0)
@@ -210,17 +214,22 @@ class DataObject:
             idx_1 = nmonths*i
             idx_2 = nmonths*(i+1)
             slice=exc_array[idx_1:idx_2,:,:].astype(int)
+            assert slice.shape==(239,self.data_rows,self.data_columns), "slice doesn't have same shape as p90"
 
             #sum of bool as ints within selected time period
+            sum=np.sum(slice,axis=0, dtype=np.int32)
             stacker.append(np.sum(slice,axis=0, dtype=np.int32))
+            "Stacker is already wrong"
             
         self.counter_array=np.stack(stacker,axis=0)
+
+
         self.fcounter_array=self.flat_array(self.counter_array)
 
-        assert self.counter_array.shape==(math.ceil(d1/nmonths),244,153), "produced counter array doesn not have correct shape"
-        return [self.counter_array, self.fcounter_array]
+        assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+        return [self.counter_array, self.fcounter_array, slice,sum]
 
-    def islarger (self,array3D, threshold):
+    def islarger(self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
 
         threshold=threshold
