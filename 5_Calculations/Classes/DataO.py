@@ -1,4 +1,4 @@
-#import necessary libraries
+ #import necessary libraries
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -89,6 +89,7 @@ class DataObject:
 
         #intitialising common coordinate vectors from last df read
         [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
+        print(array4D.shape)
         return [xcoord, ycoord, array4D]
 
     def run_stats(self,KStest=True,stats=True,tp_90=True):
@@ -174,7 +175,7 @@ class DataObject:
 
     def flat_array(self,array):
         #flattens an array one column after another
-        # to follow features which are squares buit colmn-wise (iteration through y then y)
+        # to follow features which are squares buit colmn-wise (iteration through y then x)
 
         flatarray=array.flatten('F')
         return flatarray
@@ -183,7 +184,8 @@ class DataObject:
         self.threshold=threshold
 
     def counter(self,periodiser=20):
-         #function takes in an array, a theshold and a year period -
+        'TODO: solve issue of missing months in year blocks'
+        #function takes in an array, a theshold and a year period -
         # returns array of ints = nb of months the values 
         # in the argument array exceeded the threshold during the specified time period.
         
@@ -216,6 +218,7 @@ class DataObject:
         self.fcounter_array=self.flat_array(self.counter_array)
 
         assert self.counter_array.shape==(math.ceil(d1/nmonths),244,153), "produced counter array doesn not have correct shape"
+        return [self.counter_array, self.fcounter_array]
 
     def islarger (self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
@@ -243,4 +246,4 @@ class DataObject:
 
     def max_val(self):
         #computes maximum accross time dimension
-        self.max_array=np.amax(self.untreated_array,axis=0)
+        self.max_array=np.amax(self.p90_array,axis=0)

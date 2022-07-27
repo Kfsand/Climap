@@ -58,13 +58,13 @@ class MapObject:
         squares_array=[]
         
         #n x m cordinates give (n-1) x (m-1) squares
-        for i in range(len(xcoord)-1):
-            for j in range(len(ycoord)-1):
+        for i in range(len(x)-1):
+            for j in range(len(y)-1):
             
                 x1=x[i]
-                x2=x[(i+1)%len(xcoord)]
+                x2=x[(i+1)%len(x)]
                 y1=y[j]
-                y2=y[(j+1)%len(ycoord)]
+                y2=y[(j+1)%len(y)]
 
                 a=OSGB36toWGS84(x1, y1)
                 b=OSGB36toWGS84(x2, y1)
@@ -75,6 +75,7 @@ class MapObject:
         return squares_array
 
     def geojson_coords(self):
+        #creates geojson dictionnary defining map squares as polygons with coordinates
 
         self.geojson = {'type':'FeatureCollection', 'features':[]}
 
@@ -103,7 +104,6 @@ class MapObject:
     
     def build_props(self):
         for variable in self.dlist:
-            print(variable.fcounter_array.size)
             self.geojson_props(variable.title,variable.fcounter_array)
 
     def geojson_props(self,vartitle,flat_prop_array):
@@ -112,7 +112,7 @@ class MapObject:
 
         i=0
         for feature in self.geojson['features']:
-            feature["properties"][vartitle+" - excess days"]=int(flat_prop_array[i])
+            feature["properties"][vartitle]=int(flat_prop_array[i])
             #feature["properties"][vartitle+" - excess days"]=i
             i+=1
 
