@@ -9,26 +9,30 @@ import os
 class MapObject:
 
     ##### CLASS ATTRIBUTES ####
-    # name : (string)
-    # dlist : (list of DataObjects)
-    # dnames : (list of strings) DataObject names contained in dlist
-    # respath : (string) path for result saving
-    # sqrcoords : (?) lat lon coordinates for squares mapping
-    # geojson : (dict) data in geojson format
-    # KS : (bool)
-    # stats : (list)
-    # p90_array : (np.array)
-    # threshold: (int)
+    # NAME : (string)
+    # DLIST : (list of DataObjects)
+    # DNAMES : (list of strings) DataObject names contained in dlist
+    # RESPATH : (string) path for result saving
+    # SQRCOORDS : (?) lat lon coordinates for squares mapping
+    # GEOJSON : (dict) data in geojson format
 
+    ######### INIT #########
+    # 1. initialising attributes
+    # 2. creating coordinates array for map squares
+    # 3. creating gepjson dictionnary object with coordinates
 
     def __init__(self,name,dataobject,respath):
+
+        ######### 1 ########## - initialising attributes
         self.name=name
         self.dlist=[dataobject]
         self.dnames= [dataobject.title]
         self.respath=respath
 
-
+        ######### 2 ########## - creating coordinates array for map squares
         self.sqrcoords=self.buildsqrBNG(dataobject.xcoord,dataobject.ycoord)
+
+        ######### 3 ########## - creating gepjson dictionnary object and intialising features with square coordinates
         self.sqrcoords=self.geojson_coords()
         
     

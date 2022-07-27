@@ -9,56 +9,59 @@ import math
 class DataObject:
 
     ##### CLASS ATTRIBUTES ####
-    # title : (string)
-    # varname : (string)
-    # sres : (int)
-    # tres : (int)
-    # fdname : (path)
-    # fdpath : (path)
-    # respath : (path)
-    # members: (int)
-    # total_rows: (int),
-    # block_rows: (int),
-    # data_rows: (int),
-    # data_columns: (int)
-    # xcoord : (np.array)
-    # ycoord : (np.array)
-    # untreated_array : (np.array)
-    # KS_results : (list)
-    # KS : (bool)
-    # stats : (list)
-    # p90_array : (np.array)
-    # threshold: (int)
-    # counter_array: (np.array shape= blocks,ydim.xdim)
-    # fcounter_array: (np.array shape= )
+    # TITLE : (string) title of dataobject - used in names of saved data files
+    # VARNAME : (string) name of variable ex: MaxTemp - used in map object
+    # SRES : (int) spatial resolution (in km_sqr)
+    # TRES : (int) time resolution (dayly, monthly, seasonal, yearly)
+    # FDPATH : (path) path of data folder
+    # RESPATH : (path) path of result folder
+    # MEMBERS: (int) number of evaluated climate scenario members
+    # TOTAL_ROWS : (int) number of rows in data excel
+    # BLOCK_ROWS : (int) total number of rows in one data block, including coordinate and blanck rows (one time unit: ex one month)
+    # DATA_ROWS : (int) number of data rows in one data block (one time unit: ex one month)
+    # DATA_COLUMNS : (int) number of data columns (excluding coordinate column)
+    # XCOORD : (np.array) xcoordinate 1D array (length data_rows)
+    # YCOORD : (np.array) ycoordinate 1D array (length data_columns)
+    # UNTREATED_ARRAY : (np.array) raw data array 2D array (shape data_rows-1,data_columns)
+    # KS_RESULTS : (list) [total,fitted,fails,Dcrit,stat_array]
+    # KS : (bool) set to True if KS success_rate > 0.99, False otherwise
+    # STATS : (list) [mean_array_across_time max_array_across_time min_array_across_time]
+    # P90_ARRAY : (np.array) array of p90 values accross members (90% of values fall below p90)
+    # THRESHOLD (int) : counter threshold, value above which event is judge extreme (or below which if Mintemp)
+    # COUNTER_ARRAY : (np.array shape= blocks,ydim.xdim) 2D array with number of time points where weather variable exceeds threshold, 
+                    # in multiple blocks if more than one 20y period evaluated
+    # FCOUNTER_ARRAY : (np.array len=ydim*xdim ) flat counter array 1D
 
 
-    'TODO: create flat_prop_arrays, create counter at this level'
+    ######### INIT #########
+    # 1. initialising attributes
+    # 2. creating result directory
+    # 3. loading data
 
-
-    def __init__(self,title,varname,sres,tres,fdname,fdpath,respath,
+    def __init__(self,title,varname,sres,tres,fdpath,respath,
                 members=12,total_rows=58794,block_rows=246,data_rows=243,data_columns=153):
-
-        #title: name of variable ex: MaxTemp
+        
+        ######### 1 ########## - initialising attributes
         self.title=title
         self.varname=varname
         self.sref=sres
         self.tres=tres
-        self.fdname=fdname
         self.respath=respath+'/'+title
         self.members=members
         self.total_rows=total_rows
         self.block_rows=block_rows
         self.data_rows=data_rows
         self.data_columns=data_columns
-        self.gap=3
 
-        #creating result directory
+    
+        ######### 2 ########## - creating result directory
         if not os.path.exists(self.respath):
             os.mkdir(self.respath)
-    
-        #loading data
-        [self.xcoord, self.ycoord, self.untreated_array, self.table]=self.loadnp(fdpath)   
+        
+        ######### 3 ########## - loading data
+        [self.xcoord, self.ycoord, self.untreated_array]=self.loadnp(fdpath)   
+
+
 
     def loadnp(self,path):
 
@@ -77,26 +80,30 @@ class DataObject:
             array3D=[]
 
             for i in range(math.ceil(self.total_rows/self.block_rows)):
+
                 
+                #slicing data from dataframe and storing it into 3D array for stacking
+                #each time block is stored separately
+                # data is saved skipping date row and excluding coordinate column and row
+                # this section should adapt to varying block and data_row sizes
+
                 idx_1 = self.block_rows*i+2
                 idx_2 = idx_1+self.data_rows-1
                 array3D.append(df.iloc[idx_1:idx_2+1, 1:].to_numpy())
-                table=df.iloc[idx_1:idx_2+1, 1:].to_numpy()
-        
-        #[xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
-        #return [xcoord, ycoord, array4D, table]
             array3D=np.stack(array3D)
             array4D.append(array3D)
         array4D=np.stack(array4D)
+
         #si tu veux pas un array 3d
         #(exemple pour exporter en csv) alors np.vstack pour tout mettre à la suite
 
-
         #intitialising common coordinate vectors from last df read
         [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
-        return [xcoord, ycoord, array4D, table]
+        return [xcoord, ycoord, array4D]
 
-    def run_stats(self,KStest=True,stats=True,tp_90=True):
+
+
+    def run_stats(self,KStest=False,stats=True,tp_90=True):
         if KStest==True:
             self.KS_results=self.norm_test()
 
@@ -112,7 +119,7 @@ class DataObject:
         if tp_90==True:
             self.p90_array=self.p_90()
 
-    def norm_test(self,timeaxis=1,xaxis=2,yaxis=3,Save=True,Display=False):
+    def norm_test(self,timeaxis=1,xaxis=2,yaxis=3,Save=True,Display=True):
 
         array4D=self.untreated_array
 
@@ -217,10 +224,8 @@ class DataObject:
 
             #sum of bool as ints within selected time period
             sum=np.sum(slice,axis=0, dtype=np.int32)
-            stacker.append(np.sum(slice,axis=0, dtype=np.int32))
-            
+            stacker.append(np.sum(slice,axis=0, dtype=np.int32))    
         self.counter_array=np.stack(stacker,axis=0)
-
 
         self.fcounter_array=self.flat_array(self.counter_array)
 
@@ -250,6 +255,3 @@ class DataObject:
         else:
             self.KS=False
 
-    def max_val(self):
-        #computes maximum accross time dimension
-        self.max_array=np.amax(self.p90_array,axis=0)
