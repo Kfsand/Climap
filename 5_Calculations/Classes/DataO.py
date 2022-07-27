@@ -214,12 +214,10 @@ class DataObject:
             idx_1 = nmonths*i
             idx_2 = nmonths*(i+1)
             slice=exc_array[idx_1:idx_2,:,:].astype(int)
-            assert slice.shape==(239,self.data_rows,self.data_columns), "slice doesn't have same shape as p90"
 
             #sum of bool as ints within selected time period
             sum=np.sum(slice,axis=0, dtype=np.int32)
             stacker.append(np.sum(slice,axis=0, dtype=np.int32))
-            "Stacker is already wrong"
             
         self.counter_array=np.stack(stacker,axis=0)
 
@@ -227,7 +225,6 @@ class DataObject:
         self.fcounter_array=self.flat_array(self.counter_array)
 
         assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
-        return [self.counter_array, self.fcounter_array, slice,sum]
 
     def islarger(self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
