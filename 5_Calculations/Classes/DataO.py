@@ -194,11 +194,13 @@ class DataObject:
     def set_threshold(self,threshold):
         self.threshold=threshold
 
-    def counter(self,periodiser=20):
+    def counter(self,periodiser=20, option='abs'):
         'TODO: solve issue of missing months in year blocks'
         #function takes in an array, a theshold and a year period -
         # returns array of ints = nb of months the values 
         # in the argument array exceeded the threshold during the specified time period.
+        # option can be either 'abs': counting occurrances above threshold,
+        # or 'rel': counting occurrances above threhold and scale of excess (weighted mean)
         
         assert self.p90_array.shape==(239,self.data_rows,self.data_columns), "p90_array passed on doesn't have correct shape"
         
@@ -209,27 +211,52 @@ class DataObject:
         #number of months in block of periodiser years
         if self.tres=='monthly':
             nmonths=12*periodiser
-
-        #computing bool array of values exceeding threshold (=>)
-        exc_array=self.islarger(self.p90_array,self.threshold)
-
-        stacker=[]
-
-        for i in range(math.ceil(d1/nmonths)):
         
-            #slicing appropriate time period from bool array
-            idx_1 = nmonths*i
-            idx_2 = nmonths*(i+1)
-            slice=exc_array[idx_1:idx_2,:,:].astype(int)
+        if option=='abs':
+            #computing bool array of values exceeding threshold (=>)
+            bool_array=self.islarger(self.p90_array,self.threshold)
 
-            #sum of bool as ints within selected time period
-            sum=np.sum(slice,axis=0, dtype=np.int32)
-            stacker.append(np.sum(slice,axis=0, dtype=np.int32))    
-        self.counter_array=np.stack(stacker,axis=0)
+            stacker=[]
 
-        self.fcounter_array=self.flat_array(self.counter_array)
+            for i in range(math.ceil(d1/nmonths)):
+            
+                #slicing appropriate time period from bool array
+                idx_1 = nmonths*i
+                idx_2 = nmonths*(i+1)
+                slice=bool_array[idx_1:idx_2,:,:].astype(int)
 
-        assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+                #sum of bool as ints within selected time period
+                stacker.append(np.sum(slice,axis=0, dtype=np.int32))    
+            self.counter_array=np.stack(stacker,axis=0)
+
+            self.fcounter_array=self.flat_array(self.counter_array)
+
+            assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+            
+        if option=='rel':
+
+            bool_array=self.islarger(self.p90_array,self.threshold)
+            diff_array=self.p90_array-self.threshold
+
+            stacker=[]
+
+            for i in range(math.ceil(d1/nmonths)):
+            
+                #slicing appropriate time period from bool array
+                idx_1 = nmonths*i
+                idx_2 = nmonths*(i+1)
+                slice=diff_array[idx_1:idx_2,:,:]*bool_array[idx_1:idx_2,:,:].astype(int)
+
+                #sum of bool as ints within selected time period
+                stacker.append(np.sum(slice,axis=0, dtype=np.int32))
+
+            #normalisation
+            stacker=stacker/nmonths    
+            self.counter_array=np.stack(stacker,axis=0)
+
+            self.fcounter_array=self.flat_array(self.counter_array)
+
+            assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
 
     def islarger(self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
