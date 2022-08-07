@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import json
 from Classes import DataO
+from Classes import GC
 import os
 
 class MapObject:

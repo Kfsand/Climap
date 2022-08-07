@@ -9,8 +9,8 @@ import math
 class DataObject:
 
     ##### CLASS ATTRIBUTES ####
-    # TITLE : (string) title of dataobject - used in names of saved data files
-    # VARNAME : (string) name of variable ex: MaxTemp - used in map object
+    # TITLE : (string) title of dataobject - used for component calculatations USE SAME AS NAME OR VARIABLE IN CODE
+    # VARNAME : (string) name of variable ex: MaxTemp - used in map object USE SAME AS THRESHOLDS AND CORREL DATAFRAMES
     # SRES : (int) spatial resolution (in km_sqr)
     # TRES : (int) time resolution (dayly, monthly, seasonal, yearly)
     # FDPATH : (path) path of data folder
@@ -27,10 +27,7 @@ class DataObject:
     # KS : (bool) set to True if KS success_rate > 0.99, False otherwise
     # STATS : (list) [mean_array_across_time max_array_across_time min_array_across_time]
     # P90_ARRAY : (np.array) array of p90 values accross members (90% of values fall below p90)
-    # THRESHOLD (int) : counter threshold, value above which event is judge extreme (or below which if Mintemp)
-    # COUNTER_ARRAY : (np.array shape= blocks,ydim.xdim) 2D array with number of time points where weather variable exceeds threshold, 
-                    # in multiple blocks if more than one 20y period evaluated
-    # FCOUNTER_ARRAY : (np.array len=ydim*xdim ) flat counter array 1D
+
 
 
     ######### INIT #########
@@ -38,7 +35,7 @@ class DataObject:
     # 2. creating result directory
     # 3. loading data
 
-    def __init__(self,title,varname,sres,tres,fdpath,respath,
+    def __init__(self,title,varname,sres,tres,syear,fyear,fdpath,respath,
                 members=12,total_rows=58794,block_rows=246,data_rows=243,data_columns=153):
         
         ######### 1 ########## - initialising attributes
@@ -46,6 +43,8 @@ class DataObject:
         self.varname=varname
         self.sref=sres
         self.tres=tres
+        self.syear=syear 
+        self.fyear=fyear
         self.respath=respath+'/'+title
         self.members=members
         self.total_rows=total_rows
@@ -59,11 +58,11 @@ class DataObject:
             os.mkdir(self.respath)
         
         ######### 3 ########## - loading data
-        [self.xcoord, self.ycoord, self.untreated_array]=self.loadnp(fdpath)   
+        [self.xcoord, self.ycoord, self.untreated_array]=self.load_subsets(fdpath)   
 
 
 
-    def loadnp(self,path):
+    def load_subsets(self,path):
 
         # create list of files names to open, every .csv file in directory
         list_file=[f for f in os.listdir(path) if ".csv" in f]
@@ -101,9 +100,46 @@ class DataObject:
         [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
         return [xcoord, ycoord, array4D]
 
+    def load_sqr(self,path):
 
+        'How to go in each directory'
+        # create list of files names to open, every .csv file in directory
+        list_file=[f for f in os.listdir(path) if ".csv" in f]
+        #initialising 4D array storing all values
+        array4D=[]
 
-    def run_stats(self,KStest=False,stats=True,tp_90=True):
+        #list of column names, needed to force correct shape of df
+        col_names=["x"+str(i) for i in range(self.data_columns+1)]
+
+        #opening and reading each consecutive file
+        for f in list_file:
+            df = pd.read_csv(os.path.join(path,f),skiprows=14, names=col_names)
+            #initialising 3D array storing values of each file
+            array3D=[]
+
+            for i in range(math.ceil(self.total_rows/self.block_rows)):
+
+                
+                #slicing data from dataframe and storing it into 3D array for stacking
+                #each time block is stored separately
+                # data is saved skipping date row and excluding coordinate column and row
+                # this section should adapt to varying block and data_row sizes
+
+                idx_1 = self.block_rows*i+2
+                idx_2 = idx_1+self.data_rows-1
+                array3D.append(df.iloc[idx_1:idx_2+1, 1:].to_numpy())
+            array3D=np.stack(array3D)
+            array4D.append(array3D)
+        array4D=np.stack(array4D)
+
+        #si tu veux pas un array 3d
+        #(exemple pour exporter en csv) alors np.vstack pour tout mettre à la suite
+
+        #intitialising common coordinate vectors from last df read
+        [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
+        return [xcoord, ycoord, array4D]
+
+    def run_stats(self,KStest=False,stats=True,tp_90=True,tp_10=False):
         if KStest==True:
             self.KS_results=self.norm_test()
 
@@ -117,7 +153,10 @@ class DataObject:
             self.stats=self.av_min_max()
         
         if tp_90==True:
-            self.p90_array=self.p_90()
+            self.p90_array=self.p90()
+        
+        if tp_10==True:
+            self.p10_aray=self.p10()
 
     def norm_test(self,timeaxis=1,xaxis=2,yaxis=3,Save=True,Display=True):
 
@@ -177,12 +216,19 @@ class DataObject:
     def av_min_max(self):
         return [np.mean(self.untreated_array,axis=0), np.amax(self.untreated_array,axis=0), np.amin(self.untreated_array,axis=0)]
 
-    def p_90(self,Save=True):
+    def p90(self,Save=True):
         p90_array=np.percentile(self.untreated_array,90,axis=0)
 
         if Save==True:
             np.savez(self.respath+'/p90',p90_array)
         return p90_array
+
+    def p10(self,Save=True):
+        p10_array=np.percentile(self.untreated_array,10,axis=0)
+
+        if Save==True:
+            np.savez(self.respath+'/p10',p10_array)
+        return p10_array
 
     def flat_array(self,array):
         #flattens an array one column after another
@@ -191,10 +237,7 @@ class DataObject:
         flatarray=array.flatten('F')
         return flatarray
 
-    def set_threshold(self,threshold):
-        self.threshold=threshold
-
-    def counter(self,periodiser=20, option='abs'):
+    def counter(self,thresh,periodiser=20, option='abs'):
         'TODO: solve issue of missing months in year blocks'
         #function takes in an array, a theshold and a year period -
         # returns array of ints = nb of months the values 
@@ -206,15 +249,16 @@ class DataObject:
         
         #setting first dimension as total number of months in array
         d1=np.size(self.p90_array,0)
-        self.counter_array=np.empty(self.p90_array.shape)
+        counter_array=np.empty(self.p90_array.shape)
         
         #number of months in block of periodiser years
         if self.tres=='monthly':
             nmonths=12*periodiser
         
         if option=='abs':
+            'YET TO BE TESTED'
             #computing bool array of values exceeding threshold (=>)
-            bool_array=self.islarger(self.p90_array,self.threshold)
+            bool_array=self.islarger(self.p90_array,thresh)
 
             stacker=[]
 
@@ -227,16 +271,16 @@ class DataObject:
 
                 #sum of bool as ints within selected time period
                 stacker.append(np.sum(slice,axis=0, dtype=np.int32))    
-            self.counter_array=np.stack(stacker,axis=0)
+            counter_array=np.stack(stacker,axis=0)
 
-            self.fcounter_array=self.flat_array(self.counter_array)
+            fcounter_array=self.flat_array(counter_array)
 
-            assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+            assert counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
             
         if option=='rel':
 
-            bool_array=self.islarger(self.p90_array,self.threshold)
-            diff_array=self.p90_array-self.threshold
+            bool_array=self.islarger(self.p90_array,thresh)
+            diff_array=self.p90_array-thresh
 
             stacker=[]
 
@@ -252,11 +296,14 @@ class DataObject:
 
             #normalisation
             stacker=stacker/nmonths    
-            self.counter_array=np.stack(stacker,axis=0)
+            counter_array=np.stack(stacker,axis=0)
 
-            self.fcounter_array=self.flat_array(self.counter_array)
+            fcounter_array=self.flat_array(counter_array)
 
-            assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+            assert counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+
+        return  [counter_array, fcounter_array]
+
 
     def islarger(self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
