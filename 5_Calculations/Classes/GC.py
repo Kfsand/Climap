@@ -52,7 +52,7 @@ class GComponent:
 
     def calc_impacts(self,threshold,do): 
         '#passed on threshold for now,to replace with self.threshold list in correct way'
-        print('\n'+'in calc_impacts, printing for: ' + do.varID)
+        # print('\n'+'in calc_impacts, printing for: ' + do.varID)
 
         #1. call counter function of do with chosen threshold (using varname)
         diff_array=do.counter(threshold,option='rel')
@@ -64,7 +64,7 @@ class GComponent:
 
         if pd.isna(self.correls[do.varID]):
             
-            print('no correlations provided, impact calculation unsuccesful')
+            #print('no correlations provided, impact calculation unsuccesful')
             return
 
         else:

@@ -213,10 +213,6 @@ class MapObject_daily:
                                                 [a[1],a[0]]]]
             
             self.geojson["features"].append(feature)
-    
-    def build_props(self):
-        for variable in self.dlist:
-            self.geojson_props(variable.title,variable.fcounter_array)
 
     def geojson_props(self,vartitle,flat_prop_array):
         ##add property to geojson features, expect title of property 
