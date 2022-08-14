@@ -329,29 +329,24 @@ class DataObject:
             assert self.p90_array.shape==(7200,1,75), "p90_array passed on doesn't have correct shape"
             
             if option=='abs':
-                #computing bool array of values exceeding threshold (=>)
+
+                #1. compute bool array of values exceeding threshold (checking Tamb >= Tthresh)
                 bool_array=self.islarger(self.p90_array,thresh)
                 #summing bools
                 counter_array=np.sum(bool_array,axis=0, dtype=np.int32)
-
-                # print('\n in counter, counter shape is:')
-                # print(np.shape(counter_array))
 
                 return  counter_array
 
             if option=='rel':
 
-                #counting days over threshold and calcultaing excess for each day
-                #substract thresh from p90_array
-                diff_array=self.p90_array-thresh
+                #1. compute bool array of values exceeding threshold (checking Tamb >= Tthresh)
+                bool_array=self.islarger(self.p90_array,thresh)
+                
+                #2. multiplying data and bool arrays -> only values above threshold non null
+                data_array=np.multiply(self.p90_array,bool_array)
 
-                # code to replace all negative value with 0
-                diff_array[diff_array<0] = 0
-                # print('\n in counter rel, diff shape is:')
-                # print(type(diff_array))
-                # print(np.shape(diff_array))
-
-                return  diff_array
+                #3. passing on to impact calcualtions
+                return  data_array
 
     def islarger(self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
