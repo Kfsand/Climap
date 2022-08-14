@@ -3,17 +3,17 @@ import pandas as pd
 import json
 from Classes import DataO
 import os
-
+from numpy import NaN
 
 
 class GComponent:
 
     ##### CLASS ATTRIBUTES ####
-    # NAME : (string) 
+    # GCID : (string) name if grid component, used to extract correct thresholds and correlations
     # THRESHOLDS : (dataframe) relevant slive of general threshold table, 
                 # counter threshold, value above which event is judge extreme (or below which if Mintemp)
     # CORREL Table : (dataframe) relevant slive of general correlations table
-    # DATAOBJECTS : (list - strings) name list of used DataObjects
+    # DATAOBJECTS : (object dataobject)list of used DataObjects
     # COUNTER : (list of arrayd ) 
                 # np.array shape= blocks,ydim.xdim 2D array with number of time points where weather variable exceeds threshold, 
                 # in multiple blocks if more than one 20y period evaluated
@@ -23,36 +23,59 @@ class GComponent:
 
     ######### INIT #########
     # 1. initialising attributes
+#
+    def __init__(self,GCID):
 
-    def __init__(self,name):
-
-        self.name=name
+        self.GCID=GCID
         self.data_objects=[]
-        self.counters={}
-        self.fcounters={}
+        self.correls={}
+        self.impact_arrays={}
 
-    def init_thesh(self,threshold_df):
 
-        self.thesholds=threshold_df.loc[self.name,:]
+    def init_thresh(self,threshold_df):
+        
+        # print('Init '+ str(self.GCID) + ' thresholds at: ' ) #as expected
+        # print(threshold_df.loc[self.GCID,:])
+        self.thresholds=threshold_df.loc[self.GCID,:]
     
-    def init_correl(self,correls_df):
+    def init_correl(self,correls_df,wv_list):
+        
+        for wv in wv_list:
 
-        self.correls=correls_df[self.name,:]
+            correlation=correls_df.loc[self.GCID,wv.varID]
+            
+            # adds correlation to dictionnary, adds NaN if no function was initialised
+            self.correls[wv.varID]=correlation            
 
     def add_DataO(self,data_object):
-        self.data_objectst.append(data_object.name)
+        self.data_objects.append(data_object)
 
-    def add_counter(self,datao):
-        'Save in dictionary for retreaval with name '
-        [array, farray]=datao.counter(self.thresholds[datao.varname])
-        self.counters.append(array)
-        self.fcounters.append(farray)
+    def calc_impacts(self,threshold,do): 
+        '#passed on threshold for now,to replace with self.threshold list in correct way'
+        print('\n'+'in calc_impacts, printing for: ' + do.varID)
 
-    def calc_impacts(self,varname,counterID):
-        'need : varname to get correct correlation from corrl table'
-        f = self.correls[self.name,varname]
+        #1. call counter function of do with chosen threshold (using varname)
+        diff_array=do.counter(threshold,option='rel')
+        # print('\n in calc_impacts, diff type is:')
+        # print(type(diff_array))
+        # print(np.shape(diff_array))
 
-        array=f(counterID.all())
+        # #2. recover result and calculate impact array
+
+        if pd.isna(self.correls[do.varID]):
+            
+            print('no correlations provided, impact calculation unsuccesful')
+            return
+
+        else:
+
+            impact_array=self.correls[do.varID](diff_array); 'TODO: also iterate over correlations, for the moment just one,'
+            self.impact_arrays["avg impact"]=np.mean(impact_array,axis=0)
+            self.impact_arrays["max impact"]=np.max(impact_array,axis=0)
+            # print('\n in calc_impacts, impact_array type is:')
+            # print(type(self.impact_array))
+            # print(np.size(self.impact_array))
+
 
 
 
