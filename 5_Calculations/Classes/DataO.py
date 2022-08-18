@@ -326,7 +326,7 @@ class DataObject:
             return  counter_array
 
         if self.tres=='daily':
-            assert self.p90_array.shape==(7200,1,75), "p90_array passed on doesn't have correct shape"
+            #assert self.p90_array.shape==(7200,1,75), "p90_array passed on doesn't have correct shape"
             
             if option=='abs':
 

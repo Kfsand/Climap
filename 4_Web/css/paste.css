@@ -1,0 +1,35 @@
+.full_height {
+    height: 100%;
+}
+
+.headline {
+    height: 5%;
+}
+
+.first_row {
+    height: 40%;
+}
+
+.second_row {
+    height: 38%;
+}
+
+.timeline_row {
+    height: 5%;
+}
+
+.navdown_row {
+    height: 2%;
+}
+
+#back {
+    text-align: center;
+}
+
+#go {
+    text-align: center;
+}
+
+#exlanations {
+    background-color: white;
+}
