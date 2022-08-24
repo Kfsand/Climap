@@ -5,14 +5,17 @@ from scipy import stats
 from scipy.stats import norm
 import os
 import math
+import csv
 
 class DataObject:
 
     ##### CLASS ATTRIBUTES ####
-    # TITLE : (string) title of dataobject - used in names of saved data files
-    # VARNAME : (string) name of variable ex: MaxTemp - used in map object
+    # TITLE : (string) title of dataobject - used for component calculatations USE SAME AS NAME OR VARIABLE IN CODE
+    # VARID : (string) name of variable ex: MaxTemp - used in map object USE SAME AS THRESHOLDS AND CORREL DATAFRAMES
     # SRES : (int) spatial resolution (in km_sqr)
     # TRES : (int) time resolution (dayly, monthly, seasonal, yearly)
+    # SYEAR: (int) start year of data series
+    # FYEAR: (int) end year of data series (included)
     # FDPATH : (path) path of data folder
     # RESPATH : (path) path of result folder
     # MEMBERS: (int) number of evaluated climate scenario members
@@ -22,15 +25,15 @@ class DataObject:
     # DATA_COLUMNS : (int) number of data columns (excluding coordinate column)
     # XCOORD : (np.array) xcoordinate 1D array (length data_rows)
     # YCOORD : (np.array) ycoordinate 1D array (length data_columns)
-    # UNTREATED_ARRAY : (np.array) raw data array 2D array (shape data_rows-1,data_columns)
+    # UNTREATED_ARRAY : (np.array) raw data array [members,time,ydim,xdim]
     # KS_RESULTS : (list) [total,fitted,fails,Dcrit,stat_array]
     # KS : (bool) set to True if KS success_rate > 0.99, False otherwise
     # STATS : (list) [mean_array_across_time max_array_across_time min_array_across_time]
     # P90_ARRAY : (np.array) array of p90 values accross members (90% of values fall below p90)
-    # THRESHOLD (int) : counter threshold, value above which event is judge extreme (or below which if Mintemp)
-    # COUNTER_ARRAY : (np.array shape= blocks,ydim.xdim) 2D array with number of time points where weather variable exceeds threshold, 
-                    # in multiple blocks if more than one 20y period evaluated
-    # FCOUNTER_ARRAY : (np.array len=ydim*xdim ) flat counter array 1D
+    # P10_ARRAY : (np.array) array of p10 values accross members (10% of values fall below p10), used for MINTEMP
+    # COUNTER_ARRAY:
+    # FCOUNTER_ARRAY:
+
 
 
     ######### INIT #########
@@ -38,14 +41,16 @@ class DataObject:
     # 2. creating result directory
     # 3. loading data
 
-    def __init__(self,title,varname,sres,tres,fdpath,respath,
+    def __init__(self,title,varID,sres,tres,syear,fyear,fdpath,respath,
                 members=12,total_rows=58794,block_rows=246,data_rows=243,data_columns=153):
         
         ######### 1 ########## - initialising attributes
         self.title=title
-        self.varname=varname
+        self.varID=varID
         self.sref=sres
         self.tres=tres
+        self.syear=syear 
+        self.fyear=fyear
         self.respath=respath+'/'+title
         self.members=members
         self.total_rows=total_rows
@@ -59,11 +64,16 @@ class DataObject:
             os.mkdir(self.respath)
         
         ######### 3 ########## - loading data
-        [self.xcoord, self.ycoord, self.untreated_array]=self.loadnp(fdpath)   
+        if sres==5 and tres=='monthly':
+            [self.xcoord, self.ycoord, self.untreated_array]=self.load_subsets(fdpath)
+        
+        if sres==60 and tres=='daily':
+            [self.coord_dict, self.untreated_array]=self.load_sqrs(fdpath)
 
 
 
-    def loadnp(self,path):
+
+    def load_subsets(self,path):
 
         # create list of files names to open, every .csv file in directory
         list_file=[f for f in os.listdir(path) if ".csv" in f]
@@ -101,9 +111,57 @@ class DataObject:
         [xcoord, ycoord]=[df.iloc[1,1:].map(lambda x : int(float(x)) ).to_numpy(),df.iloc[2:self.block_rows,0].map(lambda x : int(float(x)) ).to_numpy()]
         return [xcoord, ycoord, array4D]
 
+    def load_sqrs(self,path):
 
+        'How to go in each directory'
+        # create list of files names to open, every .csv file in directory
+        list_file=sorted([f for f in os.listdir(path) if ".csv" in f])
 
-    def run_stats(self,KStest=False,stats=True,tp_90=True):
+        #coordinate dict
+        coord_dict={}
+        #initialising 3D array storing all values
+        array3D=[]
+
+        #list of column names, needed to force correct shape of df
+        col_names=["member_"+str(i) for i in range(self.data_columns+1)]
+
+        #locaiton/file/square ID
+        squareID=1
+
+        #opening and reading each consecutive file
+        for f in list_file:
+
+            #collecting coordinates
+            with open(os.path.join(path,f),newline='') as csvfile:
+                reader=csv.DictReader(csvfile)
+                for i, row in enumerate(reader): 
+                    if i==0:
+
+                        values = row['13'].split(" ")  #first value is xcoord, second value is ycoord
+                        xcoord = int(float(values[0]))
+                        ycoord = int(float(values[1]))
+                        coord_dict[squareID]=(xcoord, ycoord)
+            squareID+=1
+            
+            #reading and saving values
+            df = pd.read_csv(os.path.join(path,f),skiprows=13, names=col_names)
+            #initialising 3D array storing values of each file
+            array2D=[]
+        
+            #saving all values in file
+            array2D.append(df.iloc[:,1:13].to_numpy())
+
+            array3D.append(array2D)
+        
+        array3D=np.stack(array3D)
+        array3D=np.transpose(array3D,(3,2,1,0))
+        return [coord_dict, array3D]
+
+    def run_stats(self,KStest=False,stat_source='p90',tp_90=True,tp_10=False):
+
+        #    stat_source can either be 'members' for a calculation of avg,max and min over member data purely
+        #    or (PREFERRED OPTION) can be 'p90' for a calculation of avg,max and min over p90 of member data : 
+
         if KStest==True:
             self.KS_results=self.norm_test()
 
@@ -112,12 +170,17 @@ class DataObject:
                 self.KS=True
             else:
                 self.KS=False
-
-        if stats==True:
-            self.stats=self.av_min_max()
         
         if tp_90==True:
-            self.p90_array=self.p_90()
+            self.p90_array=self.p90()
+        
+        if tp_10==True:
+            self.p10_array=self.p10()
+
+        if stat_source=='members':
+            [self.member_avg, self.member_max, self.member_min]=self.av_min_max(self.untreated_array)
+        elif stat_source=='p90':
+            [self.member_avg, self.member_max, self.member_min]=self.av_min_max(self.p90_array)
 
     def norm_test(self,timeaxis=1,xaxis=2,yaxis=3,Save=True,Display=True):
 
@@ -163,6 +226,9 @@ class DataObject:
                     total+=1
         
         test_results=[total,fitted,fails,Dcrit,stat_array]
+        #setting boolean to reflect KS results
+        self.KS_check()
+
         #Diplaying results
         if Display==True:
             print(str(fitted)+" fit a normal distribution out of : "+str(total)+" with critical value of: "+str(Dcrit))
@@ -174,15 +240,22 @@ class DataObject:
 
         return test_results
 
-    def av_min_max(self):
-        return [np.mean(self.untreated_array,axis=0), np.amax(self.untreated_array,axis=0), np.amin(self.untreated_array,axis=0)]
+    def av_min_max(self, array):
+        return [np.mean(array,axis=0), np.amax(array,axis=0), np.amin(array,axis=0)]
 
-    def p_90(self,Save=True):
+    def p90(self,Save=True):
         p90_array=np.percentile(self.untreated_array,90,axis=0)
 
         if Save==True:
             np.savez(self.respath+'/p90',p90_array)
         return p90_array
+
+    def p10(self,Save=True):
+        p10_array=np.percentile(self.untreated_array,10,axis=0)
+
+        if Save==True:
+            np.savez(self.respath+'/p10',p10_array)
+        return p10_array
 
     def flat_array(self,array):
         #flattens an array one column after another
@@ -191,45 +264,92 @@ class DataObject:
         flatarray=array.flatten('F')
         return flatarray
 
-    def set_threshold(self,threshold):
-        self.threshold=threshold
-
-    def counter(self,periodiser=20):
+    def counter(self,thresh,periodiser=20, option='abs'):
         'TODO: solve issue of missing months in year blocks'
         #function takes in an array, a theshold and a year period -
         # returns array of ints = nb of months the values 
         # in the argument array exceeded the threshold during the specified time period.
-        
-        assert self.p90_array.shape==(239,self.data_rows,self.data_columns), "p90_array passed on doesn't have correct shape"
-        
-        #setting first dimension as total number of months in array
-        d1=np.size(self.p90_array,0)
-        self.counter_array=np.empty(self.p90_array.shape)
-        
-        #number of months in block of periodiser years
+        # option can be either 'abs': counting occurrances above threshold,
+        # or 'rel': counting occurrances above threhold and scale of excess (weighted mean)
         if self.tres=='monthly':
+
+            assert self.p90_array.shape==(239,self.data_rows,self.data_columns), "p90_array passed on doesn't have correct shape"
+            
+            #setting first dimension as total number of months in array
+            d1=np.size(self.p90_array,0)
+            counter_array=np.empty(self.p90_array.shape)
+            
+            #number of months in block of periodiser years
             nmonths=12*periodiser
+            
+            if option=='abs':
+                #computing bool array of values exceeding threshold (=>)
+                bool_array=self.islarger(self.p90_array,thresh)
 
-        #computing bool array of values exceeding threshold (=>)
-        exc_array=self.islarger(self.p90_array,self.threshold)
+                stacker=[]
 
-        stacker=[]
+                for i in range(math.ceil(d1/nmonths)):
+                
+                    #slicing appropriate time period from bool array
+                    idx_1 = nmonths*i
+                    idx_2 = nmonths*(i+1)
+                    slice=bool_array[idx_1:idx_2,:,:].astype(int)
 
-        for i in range(math.ceil(d1/nmonths)):
-        
-            #slicing appropriate time period from bool array
-            idx_1 = nmonths*i
-            idx_2 = nmonths*(i+1)
-            slice=exc_array[idx_1:idx_2,:,:].astype(int)
+                    #sum of bool as ints within selected time period
+                    stacker.append(np.sum(slice,axis=0, dtype=np.int32))    
+                counter_array=np.stack(stacker,axis=0)
 
-            #sum of bool as ints within selected time period
-            sum=np.sum(slice,axis=0, dtype=np.int32)
-            stacker.append(np.sum(slice,axis=0, dtype=np.int32))    
-        self.counter_array=np.stack(stacker,axis=0)
+                fcounter_array=self.flat_array(counter_array)
 
-        self.fcounter_array=self.flat_array(self.counter_array)
+                assert counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+                
+            if option=='rel':
 
-        assert self.counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+                bool_array=self.islarger(self.p90_array,thresh)
+                diff_array=self.p90_array-thresh
+
+                stacker=[]
+
+                for i in range(math.ceil(d1/nmonths)):
+                
+                    #slicing appropriate time period from bool array
+                    idx_1 = nmonths*i
+                    idx_2 = nmonths*(i+1)
+                    slice=diff_array[idx_1:idx_2,:,:]*bool_array[idx_1:idx_2,:,:].astype(int)
+
+                    #sum of bool as ints within selected time period
+                    stacker.append(np.sum(slice,axis=0, dtype=np.int32))
+
+                #normalisation
+                stacker=stacker/nmonths    
+                counter_array=np.stack(stacker,axis=0)
+
+                assert counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
+
+            return  counter_array
+
+        if self.tres=='daily':
+            #assert self.p90_array.shape==(7200,1,75), "p90_array passed on doesn't have correct shape"
+            
+            if option=='abs':
+
+                #1. compute bool array of values exceeding threshold (checking Tamb >= Tthresh)
+                bool_array=self.islarger(self.p90_array,thresh)
+                #summing bools
+                counter_array=np.sum(bool_array,axis=0, dtype=np.int32)
+
+                return  counter_array
+
+            if option=='rel':
+
+                #1. compute bool array of values exceeding threshold (checking Tamb >= Tthresh)
+                bool_array=self.islarger(self.p90_array,thresh)
+                
+                #2. multiplying data and bool arrays -> only values above threshold non null
+                data_array=np.multiply(self.p90_array,bool_array)
+
+                #3. passing on to impact calcualtions
+                return  data_array
 
     def islarger(self,array3D, threshold):
         #returns boolean matrix of indexes meeting condition
@@ -242,11 +362,11 @@ class DataObject:
     def display_results(self):
 
         [total,fitted,fails,Dcrit,stat_array]=self.KS_results
-        print("\n KS test results for Weather Variable: "+self.varname)
+        print("\n KS test results for Weather Variable: "+self.varID)
         print(str(fitted)+" fit a normal distribution out of : "+str(total)+" with critical value of: "+str(Dcrit))
         print("success rate: " +str(fitted/total))
 
-    def KS_passed(self,setting=0.99):
+    def KS_check(self,setting=0.99):
         [total,fitted,fails,Dcrit,stat_array]=self.KS_results
 
         if fitted/total >= setting:
