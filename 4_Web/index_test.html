@@ -7,178 +7,123 @@
     <title> Grid HeatMap - The Electricity System Climate Resilience Tool</title>
    
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <link href="./style.css" type="text/css" rel="stylesheet">
-    <link href="./paste.css" type="text/css" rel="stylesheet">"
+    <script src="./js/script.js"></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <link href="./css/style.css" type="text/css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div id="map-background">
+    <div id="map">
         <div id="map-container">
         </div>
     </div>
 
-    <div id="content">
+    <div id="high-panel">
         <!-- This is where your regular content should be -->
-    
-        <div class="container-fluid full height">
-            <div class="tab-button-container ">
-                <span id="dashboard"></span>
-                <button class="'tab-button main">CLIMAP</button>
-                <button class="'tab-button">How It Works</button>
-                <button class="'tab-button second">About</button>
-            </div>
 
-            <div class="button central">
-                <button class="button content">Hide UI</button>
-            </div>
-
-            <div class="menu left">
-                <div class= "menu-content"> 
-                    <div class= "menu-content-header">
-                        <h1>Visualise Impact</h1>
-                    </div>
-                    <div class= "menu-content-body">
-                        <div>
-                            <form class="form-inline">
-                                <div class="parameter-container label-above">
-                                    <label class="label-left"> on...</label>
-                                    <select class="dropdown">
-                                        <option value="" disabled="" selected="" hidden="">Select Grid Component</option>
-                                        <option value="full">All components</option>
-                                        <option value="Gas">Gas</option>
-                                        <option value="Nuclear">Nuclear</option>
-                                        <option value="Hydro">Hydroelectric generation</option>
-                                        <option value="Solar">Solar PV</option>
-                                        <option value="Transformers">Transformers</option>
-                                        <option value="OLines">Overhead lines</option>
-                                        <option value="Demand">Demand</option>
-                                    </select>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="result summary">
-                <div class="summary-content">
-                    <h1>Results summary</h1>
-                    <h2>Paragraph 1</h2>
-                    <p>This is text</p>
-                    <h2>Paragraph 2</h2>
-                    <p>This is text</p>
-                </div>
-
-            </div>
-            
-            <div class="pannel how">
-                <noscript> Darkening of entire background</noscript>
-                <div class="little-cross"></div>
-                <div class="How-pannel-content">
-                    <div class= "How-pannel-content-header">
-                        <h1>How to use Grid HeatMap</h1>
-                    </div>
-                    <div class= "How-pannel-content-body">
-                        <p>Hi this is text and stuff</p>
-                    </div>
-                </div>
-            </div>
-
-            <div clas="star"></div>
-            <div clas="info logo"></div>
-            <div clas="info bubble"></div>
-        </div>
-
-        <div class="container full_height">
-            <div id="summary" class="rounded m-2 p-3">
-                <span id="story"></span>
-                <h2>Results summary <a href="#" class="btn btn-dark"
-                        data-toggle="modal" data-target="#videoModal"
-                        data-theVideo="https://www.youtube.com/embed/lzl6EIbHbIo">Watch !</a></h2> <p>DUMMI TEXT Dear alpine skiing
-                fans, have you ever wondered who performed best in the World Cup during their times, and
-                how they compare to today's top athletes? Whether athletes are more or less versatile than before? Or are
-                you just looking for an easy way to review the complete history of the World Cup? Well, wonder no more, as
-                we will accompany you and show you the features we have brought to shed some light on these questions!</p>
-    
-                <p>These visualizations allow you to bring your own conclusions about the evolution of the sport and its
-                    athletes. A wide variety of chopice awaits you, and here is a short presentation of everything that is
-                    available.</p>
-    
-                <h3>Parameters</h3>
-    
-                <p>Before diving into all the different components, take some time to set your parameters. Choose your year
-                    using the slider at the bottom and whether you would like to look at the women's or men's results, and
-                    you
-                    are then good to go!</p>
-    
-                <h3>Dynamic rankings</h3>
-    
-                <p>The top-left component allows you the relive the World Cup ranking evolution as they happened at the
-                    time!
-                    Who was a main contender? Why did this slalom specialist suddenly participate in downhill events? This
-                    visualization tells you everything you need and want to know. Skiers have also the color of their
-                    favorite
-                    type of event, computed for each season. Instead of letting the animation play out for you, you can
-                    simply
-                    control it using the slider in the control box.</p>
-    
-                <h3>Event map & race results</h3>
-    
-                <p>The map shows all events of a given season. It evolves according to the progression of the season in the
-                    bar
-                    chart race. When you click on a given event, you can choose which race results you want to display in
-                    the
-                    top-right panel.</p>
-    
-                <h3>Similarity graph</h3>
-    
-                <p>The graph (bottom-middle component) shows how skiers are <i>linked</i> between each other during a given
-                    season. You can generally notice a group of technicians and another one of speed specialists. Every
-                    skier
-                    in-between is versatile and competes in all types of events.</p>
-    
-                <h3>Skier profile</h3>
-    
-                <p>Finally, the bottom-right component links everything together. It displays the information we have about
-                    a
-                    specific athlete, and shows graphs about the mean number of points he gathers per event, and all his
-                    World
-                    Cup points during his whole career. Each component is linked to the profile, so you can always know more
-                    about this one skier who almost won the Wolrd Cup. There is also a search bar with autocomplete
-                    available!
-                </p>
-                <h3>More help</h3>
-    
-                <p>To non-specialists, here is a small dictionary:
-                <ul>
-                    <li><b>DH</b>: Downhill</li>
-                    <li><b>SG</b>: Super G</li>
-                    <li><b>GS</b>: Giant Slalom</li>
-                    <li><b>SL</b>: Slalom</li>
-                    <li><b>AC</b>: (Alpine) Combined</li>
-                    <li><b>PAR</b>: Parallel</li>
-                    <li><b>NQ</b>: Not qualified</li>
-                    <li><b>AB</b>: Abandon</li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
                 </ul>
-                </p>
-                <div id="back">
-                    <a href="#dashboard">Back to "Grid HeatMap"!</a>
-                </div>
-                <br>
-                <div style="text-align: center;">
-                    <img id="cuche" class="img-fluid rounded" width="500px" src="./img/cuche.jpg">
-                </div>
+              </div>
             </div>
-    
+        </nav>  
+
+        <div id="hide-UI">
+            <button id="hideUI" type="button" class="btn btn-primary" onclick="hide()">Hide UI</button>
+            <button id="showUI" onclick="show()">Show UI</button>
         </div>
 
-       
+        <div id="down">
+            <button type="button" class="btn btn-dark" href="#lowboard">View details!</button>
+        </div>
+
+        <div id="menu-left">
+                <form class="form-inline">
+                    <div class="parameter-container label-above">
+                        <label class="label-left"> on...</label>
+                        <select class="dropdown" onchange="changeMap()">
+                            <option value="" disabled="" selected="" hidden="">Select Grid Component</option>
+                            <option value="full">All components</option>
+                            <option value="Gas">Gas</option>
+                            <option value="Nuclear">Nuclear</option>
+                            <option value="Hydro">Hydroelectric generation</option>
+                            <option value="Solar">Solar PV</option>
+                            <option value="Transformers">Transformers</option>
+                            <option value="OLines">Overhead lines</option>
+                            <option value="Demand">Demand</option>
+                        </select>
+                    </div>
+                </form>
+                
+        </div> 
+        
+            <!-- Scrollable modal -->
+        <div class="modal-dialog modal-dialog-scrollable">
+        </div>
     
+  
+  
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal</button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="low-panel">
+        <span id="lowboard"></span>
+        <div class= "How-pannel-content-header">
+            <h1>How to use Grid HeatMap</h1>
+        </div>
+        <div class= "How-pannel-content-body">
+            <p>Hi this is text and stuff</p>
+
+            <h2>Results summary <a href="#" class="btn btn-dark"></a>
+
+            <div id="top">
+                <a href="#dashboard">Back to "Grid HeatMap"!</a>
+            </div>
+        </div>
     </div>
 
 
@@ -187,7 +132,10 @@
           var map = L.mapbox.map('map-container')
             .setView([54.729449,-4.519803], 6)
             .addLayer(L.mapbox.styleLayer('mapbox://styles/kfsand/cl62kx69f000314n38b71isxd'));
+
+        show()
     </script>
+    
     
 
 </body>

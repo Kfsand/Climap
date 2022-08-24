@@ -1,11 +1,10 @@
-#map-container {
-
-    min-height: 100%;
-    position: absolute;
+#map{
+    height: 100%;
     width: 100%;
 }
-#content {
-    position: absolute;
+#high-panel {
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -20,6 +19,89 @@ body, select{
     -moz-osx-font-smoothing: grayscale;
     font-size: 1.1em;
     line-height: 1.3em;
+}
+
+#down {
+
+    position: absolute;
+    width: 109px;
+    height: 40px;
+    left: calc(50% - 109px/2 + 13px);
+    top: 200px;
+
+    /* Gray / gray-1 */
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+}
+button {
+    /* Button */
+    height: 100%;
+    width: 100%;
+    background: #FFFFFF;
+    
+}
+
+#btn {
+    /* Button */
+    height: 100%;
+    width: 100%;
+    
+}
+
+
+#hide-UI{
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+
+    position: absolute;
+    width: 109px;
+    height: 40px;
+    left: calc(50% - 109px/2 + 13px);
+    top: 75px;
+
+    /* Gray / gray-1 */
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#map-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
+
+#menu-left {
+    
+    /* Left side menu */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+    gap: 24px;
+
+    position: absolute;
+    width: 300px;
+    height: 146px;
+    left: 100px;
+    top: calc(50% - 320px/2 - 122.5px);
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
 }
 
 .link {
@@ -42,17 +124,28 @@ h3, h4 {
     margin: 0.5em 0;
 }
 
+.top-bar {
+    /* Header */
 
-.panel {
-    position: absolute;
+    /* Auto layout */
     display: flex;
-    flex-direction: column;
-    max-height: 100%;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity .3s;
-    -webkit-transition: opacity .3s;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+    gap: 119px;
+
+    position: absolute;
+    width: 1728px;
+    height: 56px;
+    left: 0px;
+    top: 0px;
+
+    backdrop-filter: blur(10px);
+
+    /* Note: backdrop-filter has minimal browser support */
 }
+
 .tab-button {
     display: inline-block;
     outline: none;

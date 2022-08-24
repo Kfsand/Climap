@@ -131,8 +131,6 @@ class DataObject:
         #opening and reading each consecutive file
         for f in list_file:
 
-            
-            'TODO: convert string values read into tuples'
             #collecting coordinates
             with open(os.path.join(path,f),newline='') as csvfile:
                 reader=csv.DictReader(csvfile)
@@ -159,7 +157,10 @@ class DataObject:
         array3D=np.transpose(array3D,(3,2,1,0))
         return [coord_dict, array3D]
 
-    def run_stats(self,KStest=False,stats=True,tp_90=True,tp_10=False):
+    def run_stats(self,KStest=False,stat_source='p90',tp_90=True,tp_10=False):
+
+        #    stat_source can either be 'members' for a calculation of avg,max and min over member data purely
+        #    or (PREFERRED OPTION) can be 'p90' for a calculation of avg,max and min over p90 of member data : 
 
         if KStest==True:
             self.KS_results=self.norm_test()
@@ -169,15 +170,17 @@ class DataObject:
                 self.KS=True
             else:
                 self.KS=False
-
-        if stats==True:
-            [self.member_avg, self.member_max, self.member_min]=self.av_min_max()
         
         if tp_90==True:
             self.p90_array=self.p90()
         
         if tp_10==True:
             self.p10_array=self.p10()
+
+        if stat_source=='members':
+            [self.member_avg, self.member_max, self.member_min]=self.av_min_max(self.untreated_array)
+        elif stat_source=='p90':
+            [self.member_avg, self.member_max, self.member_min]=self.av_min_max(self.p90_array)
 
     def norm_test(self,timeaxis=1,xaxis=2,yaxis=3,Save=True,Display=True):
 
@@ -237,8 +240,8 @@ class DataObject:
 
         return test_results
 
-    def av_min_max(self):
-        return [np.mean(self.untreated_array,axis=0), np.amax(self.untreated_array,axis=0), np.amin(self.untreated_array,axis=0)]
+    def av_min_max(self, array):
+        return [np.mean(array,axis=0), np.amax(array,axis=0), np.amin(array,axis=0)]
 
     def p90(self,Save=True):
         p90_array=np.percentile(self.untreated_array,90,axis=0)
