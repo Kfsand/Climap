@@ -3,6 +3,6 @@
 .ipnb_checkpoints
 old
 Example
-3_Raw_Data/
-6_Results/
+3_Raw_Data/noload
+6_Results/noload
 .DS_Store

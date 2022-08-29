@@ -1,0 +1,12 @@
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/01/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/04/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/05/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/06/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/07/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/08/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/09/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/10/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/11/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/12/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/13/tasmax/day/v20181122/
+http://data.ceda.ac.uk/badc/ukcp18/data/land-gcm/uk/60km/rcp85/15/tasmax/day/v20181122/

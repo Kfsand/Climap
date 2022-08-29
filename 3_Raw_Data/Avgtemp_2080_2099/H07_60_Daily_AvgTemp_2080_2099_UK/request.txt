@@ -1,0 +1,13 @@
+Area = ['point', 390000.0, 510000.0]
+ClimateChangeType = absolute
+Collection = land-gcm
+DataFormat = csv
+EnsembleMemberSet = land-rcm
+JobLabel = H07_60_Daily_AvgTemp_2080_2099_UK
+Scenario = rcp85
+TemporalAverage = day
+TimeSlice = 2080|2100
+Variable = tas
+
+Process Identifier = LS2_Subset_02
+Software Version = WPS-2.7.0-DP-2.7.0-CV-1.0.8
