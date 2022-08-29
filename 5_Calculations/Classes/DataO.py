@@ -31,8 +31,6 @@ class DataObject:
     # STATS : (list) [mean_array_across_time max_array_across_time min_array_across_time]
     # P90_ARRAY : (np.array) array of p90 values accross members (90% of values fall below p90)
     # P10_ARRAY : (np.array) array of p10 values accross members (10% of values fall below p10), used for MINTEMP
-    # COUNTER_ARRAY:
-    # FCOUNTER_ARRAY:
 
 
 
@@ -264,13 +262,15 @@ class DataObject:
         flatarray=array.flatten('F')
         return flatarray
 
-    def counter(self,thresh,periodiser=20, option='abs'):
+    def counter(self,thresh,periodiser=20, option='rel'):
         'TODO: solve issue of missing months in year blocks'
         #function takes in an array, a theshold and a year period -
         # returns array of ints = nb of months the values 
         # in the argument array exceeded the threshold during the specified time period.
         # option can be either 'abs': counting occurrances above threshold,
         # or 'rel': counting occurrances above threhold and scale of excess (weighted mean)
+
+        'NOTE: monthly option is not up to date, rel calculations are not correct, needs to use same approach as daily'
         if self.tres=='monthly':
 
             assert self.p90_array.shape==(239,self.data_rows,self.data_columns), "p90_array passed on doesn't have correct shape"
@@ -304,17 +304,20 @@ class DataObject:
                 assert counter_array.shape==(math.ceil(d1/nmonths),self.data_rows,self.data_columns), "produced counter array doesn not have correct shape"
                 
             if option=='rel':
-
+                
+                #1.checking if value is above thresh for each time-space point
                 bool_array=self.islarger(self.p90_array,thresh)
+                #2.created DT=T-T_thresh array for all time-space points
                 diff_array=self.p90_array-thresh
 
                 stacker=[]
 
                 for i in range(math.ceil(d1/nmonths)):
                 
-                    #slicing appropriate time period from bool array
+                    #slicing appropriate time period from arrays
                     idx_1 = nmonths*i
                     idx_2 = nmonths*(i+1)
+                    #product of DT array with bool array generates array with DT as value if T>=Thresh or 0 as value if T>thres
                     slice=diff_array[idx_1:idx_2,:,:]*bool_array[idx_1:idx_2,:,:].astype(int)
 
                     #sum of bool as ints within selected time period
