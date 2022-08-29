@@ -31,8 +31,6 @@ class DataObject:
     # STATS : (list) [mean_array_across_time max_array_across_time min_array_across_time]
     # P90_ARRAY : (np.array) array of p90 values accross members (90% of values fall below p90)
     # P10_ARRAY : (np.array) array of p10 values accross members (10% of values fall below p10), used for MINTEMP
-    # COUNTER_ARRAY:
-    # FCOUNTER_ARRAY:
 
 
 

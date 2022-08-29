@@ -52,30 +52,32 @@ class GComponent:
 
     def calc_impacts(self,threshold,do): 
         '#passed on threshold for now,to replace with self.threshold list in correct way'
-        # print('\n'+'in calc_impacts, printing for: ' + do.varID)
 
-        #1. call counter function of do with chosen threshold (using varname)
-        diff_array=do.counter(threshold,option='rel')
-        # print('\n in calc_impacts, diff type is:')
-        # print(type(diff_array))
-        # print(np.shape(diff_array))
+        #1. call counter function of DO with chosen threshold (using varname)
+        data_array=do.counter(threshold,option='rel')
 
         # #2. recover result and calculate impact array
-
         if pd.isna(self.correls[do.varID]):
             
-            #print('no correlations provided, impact calculation unsuccesful')
+            print('no correlation provided for: ' + self.GCID + '- variable '+ do.varID + ' impact calculation unsuccesful')
             return
 
         else:
+            #saves min, max and avg impact values across time for each spatial location
 
-            impact_array=self.correls[do.varID](diff_array); 'TODO: also iterate over correlations, for the moment just one,'
+            impact_array=self.correls[do.varID](data_array); 'TODO: also iterate over correlations, for the moment just one,'
             self.impact_arrays["avg impact"]=np.mean(impact_array,axis=0)
             self.impact_arrays["max impact"]=np.max(impact_array,axis=0)
-            # print('\n in calc_impacts, impact_array type is:')
-            # print(type(self.impact_array))
-            # print(np.size(self.impact_array))
+            self.impact_arrays["min impact"]=np.min(impact_array,axis=0)
 
 
+    def calc_impacts_abs(self):
+        #used to recover absolute maximum min, max and avg impact values over entire space
+
+        minimpact=round(np.min(self.impact_arrays["max impact"]),2)
+        maximpact=round(np.max(self.impact_arrays["max impact"]),2)
+        avgimpact=round(np.mean(self.impact_arrays["max impact"]),2)
+
+        return [minimpact, maximpact, avgimpact]
 
 
