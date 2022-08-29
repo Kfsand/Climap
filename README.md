@@ -12,7 +12,7 @@ This tool was developed as part of an Imperial College London MSc Thesis project
 
 ### Installation
 
-The associated visualisation website is available under [this link](https://kfsand.github.io/Climap/).
+The associated visualisation website is available under [this link](https://kfsand.github.io/gclimateres/).
 
 ### Repository structure
 
