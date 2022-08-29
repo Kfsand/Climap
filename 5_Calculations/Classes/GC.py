@@ -53,8 +53,8 @@ class GComponent:
     def calc_impacts(self,threshold,do): 
         '#passed on threshold for now,to replace with self.threshold list in correct way'
 
-        #1. call counter function of do with chosen threshold (using varname)
-        diff_array=do.counter(threshold,option='rel')
+        #1. call counter function of DO with chosen threshold (using varname)
+        data_array=do.counter(threshold,option='rel')
 
         # #2. recover result and calculate impact array
         if pd.isna(self.correls[do.varID]):
@@ -65,13 +65,10 @@ class GComponent:
         else:
             #saves min, max and avg impact values across time for each spatial location
 
-            impact_array=self.correls[do.varID](diff_array); 'TODO: also iterate over correlations, for the moment just one,'
+            impact_array=self.correls[do.varID](data_array); 'TODO: also iterate over correlations, for the moment just one,'
             self.impact_arrays["avg impact"]=np.mean(impact_array,axis=0)
             self.impact_arrays["max impact"]=np.max(impact_array,axis=0)
             self.impact_arrays["min impact"]=np.min(impact_array,axis=0)
-            # print('\n in calc_impacts, impact_array type is:')
-            # print(type(self.impact_array))
-            # print(np.size(self.impact_array))
 
 
     def calc_impacts_abs(self):
