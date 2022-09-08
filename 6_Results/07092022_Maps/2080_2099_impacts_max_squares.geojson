@@ -1,0 +1,3080 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "1",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 15,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 53
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.096963,
+              50.398605
+            ],
+            [
+              -4.25353,
+              50.418015
+            ],
+            [
+              -4.279522,
+              50.957156
+            ],
+            [
+              -5.132648,
+              50.937372
+            ],
+            [
+              -5.096963,
+              50.398605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "2",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 23,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 25,
+        "impact: -Demand ": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.25353,
+              50.418015
+            ],
+            [
+              -3.409317,
+              50.431309
+            ],
+            [
+              -3.425584,
+              50.970706
+            ],
+            [
+              -4.279522,
+              50.957156
+            ],
+            [
+              -4.25353,
+              50.418015
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "3",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 23,
+        "impact: -Demand ": 66
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.409317,
+              50.431309
+            ],
+            [
+              -2.564616,
+              50.438476
+            ],
+            [
+              -2.571137,
+              50.978011
+            ],
+            [
+              -3.425584,
+              50.970706
+            ],
+            [
+              -3.409317,
+              50.431309
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "4",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 67
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.564616,
+              50.438476
+            ],
+            [
+              -1.719719,
+              50.439511
+            ],
+            [
+              -1.716486,
+              50.979065
+            ],
+            [
+              -2.571137,
+              50.978011
+            ],
+            [
+              -2.564616,
+              50.438476
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "5",
+      "properties": {
+        "maxtemp - 20y max": 38,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 18,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 62
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.719719,
+              50.439511
+            ],
+            [
+              -0.874918,
+              50.434411
+            ],
+            [
+              -0.861936,
+              50.973867
+            ],
+            [
+              -1.716486,
+              50.979065
+            ],
+            [
+              -1.719719,
+              50.439511
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 17,
+        "impact: -Demand ": 58
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.874918,
+              50.434411
+            ],
+            [
+              -0.030508,
+              50.423182
+            ],
+            [
+              -0.007793,
+              50.962422
+            ],
+            [
+              -0.861936,
+              50.973867
+            ],
+            [
+              -0.874918,
+              50.434411
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "7",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 56
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.030508,
+              50.423182
+            ],
+            [
+              0.81322,
+              50.405832
+            ],
+            [
+              0.845641,
+              50.944738
+            ],
+            [
+              -0.007793,
+              50.962422
+            ],
+            [
+              -0.030508,
+              50.423182
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "8",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.279522,
+              50.957156
+            ],
+            [
+              -3.425584,
+              50.970706
+            ],
+            [
+              -3.442359,
+              51.510049
+            ],
+            [
+              -4.306326,
+              51.496236
+            ],
+            [
+              -4.279522,
+              50.957156
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "9",
+      "properties": {
+        "maxtemp - 20y max": 39,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 20,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 19,
+        "impact: -Overhead Lines ": 21,
+        "impact: -Demand ": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.425584,
+              50.970706
+            ],
+            [
+              -2.571137,
+              50.978011
+            ],
+            [
+              -2.577862,
+              51.517495
+            ],
+            [
+              -3.442359,
+              51.510049
+            ],
+            [
+              -3.425584,
+              50.970706
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "10",
+      "properties": {
+        "maxtemp - 20y max": 43,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 21,
+        "impact: -Nuclear ": 23,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 23,
+        "impact: -Overhead Lines ": 26,
+        "impact: -Demand ": 68
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.571137,
+              50.978011
+            ],
+            [
+              -1.716486,
+              50.979065
+            ],
+            [
+              -1.713152,
+              51.51857
+            ],
+            [
+              -2.577862,
+              51.517495
+            ],
+            [
+              -2.571137,
+              50.978011
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "11",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 23,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 25,
+        "impact: -Demand ": 68
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.716486,
+              50.979065
+            ],
+            [
+              -0.861936,
+              50.973867
+            ],
+            [
+              -0.848548,
+              51.513271
+            ],
+            [
+              -1.713152,
+              51.51857
+            ],
+            [
+              -1.716486,
+              50.979065
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "12",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 23,
+        "impact: -Demand ": 68
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.861936,
+              50.973867
+            ],
+            [
+              -0.007793,
+              50.962422
+            ],
+            [
+              0.015633,
+              51.501604
+            ],
+            [
+              -0.848548,
+              51.513271
+            ],
+            [
+              -0.861936,
+              50.973867
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "13",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 65
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.007793,
+              50.962422
+            ],
+            [
+              0.845641,
+              50.944738
+            ],
+            [
+              0.879075,
+              51.483579
+            ],
+            [
+              0.015633,
+              51.501604
+            ],
+            [
+              -0.007793,
+              50.962422
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "14",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 18,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 56
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.169448,
+              51.47607
+            ],
+            [
+              -4.306326,
+              51.496236
+            ],
+            [
+              -4.333977,
+              52.035257
+            ],
+            [
+              -5.207408,
+              52.014699
+            ],
+            [
+              -5.169448,
+              51.47607
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "15",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 61
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.306326,
+              51.496236
+            ],
+            [
+              -3.442359,
+              51.510049
+            ],
+            [
+              -3.459664,
+              52.049338
+            ],
+            [
+              -4.333977,
+              52.035257
+            ],
+            [
+              -4.306326,
+              51.496236
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "16",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 63
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.442359,
+              51.510049
+            ],
+            [
+              -2.577862,
+              51.517495
+            ],
+            [
+              -2.584799,
+              52.056929
+            ],
+            [
+              -3.459664,
+              52.049338
+            ],
+            [
+              -3.442359,
+              51.510049
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "17",
+      "properties": {
+        "maxtemp - 20y max": 43,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 21,
+        "impact: -Nuclear ": 23,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 23,
+        "impact: -Overhead Lines ": 26,
+        "impact: -Demand ": 67
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.577862,
+              51.517495
+            ],
+            [
+              -1.713152,
+              51.51857
+            ],
+            [
+              -1.709713,
+              52.058024
+            ],
+            [
+              -2.584799,
+              52.056929
+            ],
+            [
+              -2.577862,
+              51.517495
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "18",
+      "properties": {
+        "maxtemp - 20y max": 43,
+        "avgtemp - 20y max": 34,
+        "impact: -Gas ": 21,
+        "impact: -Nuclear ": 23,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 23,
+        "impact: -Overhead Lines ": 26,
+        "impact: -Demand ": 70
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.713152,
+              51.51857
+            ],
+            [
+              -0.848548,
+              51.513271
+            ],
+            [
+              -0.834737,
+              52.052623
+            ],
+            [
+              -1.709713,
+              52.058024
+            ],
+            [
+              -1.713152,
+              51.51857
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "19",
+      "properties": {
+        "maxtemp - 20y max": 43,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 21,
+        "impact: -Nuclear ": 24,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 23,
+        "impact: -Overhead Lines ": 26,
+        "impact: -Demand ": 69
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.848548,
+              51.513271
+            ],
+            [
+              0.015633,
+              51.501604
+            ],
+            [
+              0.039799,
+              52.040729
+            ],
+            [
+              -0.834737,
+              52.052623
+            ],
+            [
+              -0.848548,
+              51.513271
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "20",
+      "properties": {
+        "maxtemp - 20y max": 44,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 22,
+        "impact: -Nuclear ": 25,
+        "impact: -Solar PV ": 9,
+        "impact: -Transformers ": 24,
+        "impact: -Overhead Lines ": 28,
+        "impact: -Demand ": 68
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.015633,
+              51.501604
+            ],
+            [
+              0.879075,
+              51.483579
+            ],
+            [
+              0.913564,
+              52.022353
+            ],
+            [
+              0.039799,
+              52.040729
+            ],
+            [
+              0.015633,
+              51.501604
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "21",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 18,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 58
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.879075,
+              51.483579
+            ],
+            [
+              1.741463,
+              51.45921
+            ],
+            [
+              1.786231,
+              51.997512
+            ],
+            [
+              0.913564,
+              52.022353
+            ],
+            [
+              0.879075,
+              51.483579
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "22",
+      "properties": {
+        "maxtemp - 20y max": 40,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 19,
+        "impact: -Nuclear ": 20,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 20,
+        "impact: -Overhead Lines ": 22,
+        "impact: -Demand ": 58
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.333977,
+              52.035257
+            ],
+            [
+              -3.459664,
+              52.049338
+            ],
+            [
+              -3.477522,
+              52.588572
+            ],
+            [
+              -4.362509,
+              52.574217
+            ],
+            [
+              -4.333977,
+              52.035257
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "23",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 63
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.459664,
+              52.049338
+            ],
+            [
+              -2.584799,
+              52.056929
+            ],
+            [
+              -2.591958,
+              52.596312
+            ],
+            [
+              -3.477522,
+              52.588572
+            ],
+            [
+              -3.459664,
+              52.049338
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "24",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 23,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 25,
+        "impact: -Demand ": 68
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.584799,
+              52.056929
+            ],
+            [
+              -1.709713,
+              52.058024
+            ],
+            [
+              -1.706164,
+              52.597429
+            ],
+            [
+              -2.591958,
+              52.596312
+            ],
+            [
+              -2.584799,
+              52.056929
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "25",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 66
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.709713,
+              52.058024
+            ],
+            [
+              -0.834737,
+              52.052623
+            ],
+            [
+              -0.820484,
+              52.591922
+            ],
+            [
+              -1.706164,
+              52.597429
+            ],
+            [
+              -1.709713,
+              52.058024
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "26",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 23,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 25,
+        "impact: -Demand ": 65
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.834737,
+              52.052623
+            ],
+            [
+              0.039799,
+              52.040729
+            ],
+            [
+              0.064736,
+              52.579796
+            ],
+            [
+              -0.820484,
+              52.591922
+            ],
+            [
+              -0.834737,
+              52.052623
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "27",
+      "properties": {
+        "maxtemp - 20y max": 44,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 22,
+        "impact: -Nuclear ": 25,
+        "impact: -Solar PV ": 9,
+        "impact: -Transformers ": 24,
+        "impact: -Overhead Lines ": 28,
+        "impact: -Demand ": 66
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.039799,
+              52.040729
+            ],
+            [
+              0.913564,
+              52.022353
+            ],
+            [
+              0.949152,
+              52.561062
+            ],
+            [
+              0.064736,
+              52.579796
+            ],
+            [
+              0.039799,
+              52.040729
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "28",
+      "properties": {
+        "maxtemp - 20y max": 42,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 22,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 62
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.913564,
+              52.022353
+            ],
+            [
+              1.786231,
+              51.997512
+            ],
+            [
+              1.832423,
+              52.535737
+            ],
+            [
+              0.949152,
+              52.561062
+            ],
+            [
+              0.913564,
+              52.022353
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "29",
+      "properties": {
+        "maxtemp - 20y max": 39,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 20,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 19,
+        "impact: -Overhead Lines ": 21,
+        "impact: -Demand ": 59
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.362509,
+              52.574217
+            ],
+            [
+              -3.477522,
+              52.588572
+            ],
+            [
+              -3.495955,
+              53.127753
+            ],
+            [
+              -4.391961,
+              53.113117
+            ],
+            [
+              -4.362509,
+              52.574217
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "30",
+      "properties": {
+        "maxtemp - 20y max": 40,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 19,
+        "impact: -Nuclear ": 21,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 20,
+        "impact: -Overhead Lines ": 23,
+        "impact: -Demand ": 64
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.477522,
+              52.588572
+            ],
+            [
+              -2.591958,
+              52.596312
+            ],
+            [
+              -2.599348,
+              53.135645
+            ],
+            [
+              -3.495955,
+              53.127753
+            ],
+            [
+              -3.477522,
+              52.588572
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "31",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 64
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.591958,
+              52.596312
+            ],
+            [
+              -1.706164,
+              52.597429
+            ],
+            [
+              -1.702501,
+              53.136783
+            ],
+            [
+              -2.599348,
+              53.135645
+            ],
+            [
+              -2.591958,
+              52.596312
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "32",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 8,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 24,
+        "impact: -Demand ": 63
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.706164,
+              52.597429
+            ],
+            [
+              -0.820484,
+              52.591922
+            ],
+            [
+              -0.805772,
+              53.131168
+            ],
+            [
+              -1.702501,
+              53.136783
+            ],
+            [
+              -1.706164,
+              52.597429
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "33",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 20,
+        "impact: -Nuclear ": 22,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 23,
+        "impact: -Demand ": 63
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.820484,
+              52.591922
+            ],
+            [
+              0.064736,
+              52.579796
+            ],
+            [
+              0.090476,
+              53.118805
+            ],
+            [
+              -0.805772,
+              53.131168
+            ],
+            [
+              -0.820484,
+              52.591922
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "34",
+      "properties": {
+        "maxtemp - 20y max": 44,
+        "avgtemp - 20y max": 33,
+        "impact: -Gas ": 22,
+        "impact: -Nuclear ": 25,
+        "impact: -Solar PV ": 9,
+        "impact: -Transformers ": 24,
+        "impact: -Overhead Lines ": 27,
+        "impact: -Demand ": 67
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.064736,
+              52.579796
+            ],
+            [
+              0.949152,
+              52.561062
+            ],
+            [
+              0.985886,
+              53.099703
+            ],
+            [
+              0.090476,
+              53.118805
+            ],
+            [
+              0.064736,
+              52.579796
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "35",
+      "properties": {
+        "maxtemp - 20y max": 45,
+        "avgtemp - 20y max": 32,
+        "impact: -Gas ": 22,
+        "impact: -Nuclear ": 25,
+        "impact: -Solar PV ": 9,
+        "impact: -Transformers ": 25,
+        "impact: -Overhead Lines ": 28,
+        "impact: -Demand ": 66
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.949152,
+              52.561062
+            ],
+            [
+              1.832423,
+              52.535737
+            ],
+            [
+              1.8801,
+              53.073882
+            ],
+            [
+              0.985886,
+              53.099703
+            ],
+            [
+              0.949152,
+              52.561062
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "36",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 57
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.495955,
+              53.127753
+            ],
+            [
+              -2.599348,
+              53.135645
+            ],
+            [
+              -2.606979,
+              53.674928
+            ],
+            [
+              -3.51499,
+              53.666881
+            ],
+            [
+              -3.495955,
+              53.127753
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "37",
+      "properties": {
+        "maxtemp - 20y max": 40,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 19,
+        "impact: -Nuclear ": 21,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 20,
+        "impact: -Overhead Lines ": 22,
+        "impact: -Demand ": 62
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.599348,
+              53.135645
+            ],
+            [
+              -1.702501,
+              53.136783
+            ],
+            [
+              -1.698717,
+              53.676089
+            ],
+            [
+              -2.606979,
+              53.674928
+            ],
+            [
+              -2.599348,
+              53.135645
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "38",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 19,
+        "impact: -Nuclear ": 21,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 23,
+        "impact: -Demand ": 61
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.702501,
+              53.136783
+            ],
+            [
+              -0.805772,
+              53.131168
+            ],
+            [
+              -0.79058,
+              53.670363
+            ],
+            [
+              -1.698717,
+              53.676089
+            ],
+            [
+              -1.702501,
+              53.136783
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "39",
+      "properties": {
+        "maxtemp - 20y max": 41,
+        "avgtemp - 20y max": 31,
+        "impact: -Gas ": 19,
+        "impact: -Nuclear ": 21,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 21,
+        "impact: -Overhead Lines ": 23,
+        "impact: -Demand ": 59
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.805772,
+              53.131168
+            ],
+            [
+              0.090476,
+              53.118805
+            ],
+            [
+              0.117056,
+              53.657755
+            ],
+            [
+              -0.79058,
+              53.670363
+            ],
+            [
+              -0.805772,
+              53.131168
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "40",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 53
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.51499,
+              53.666881
+            ],
+            [
+              -2.606979,
+              53.674928
+            ],
+            [
+              -2.614862,
+              54.214161
+            ],
+            [
+              -3.534652,
+              54.205954
+            ],
+            [
+              -3.51499,
+              53.666881
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "41",
+      "properties": {
+        "maxtemp - 20y max": 39,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 20,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 19,
+        "impact: -Overhead Lines ": 21,
+        "impact: -Demand ": 59
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.606979,
+              53.674928
+            ],
+            [
+              -1.698717,
+              53.676089
+            ],
+            [
+              -1.69481,
+              54.215345
+            ],
+            [
+              -2.614862,
+              54.214161
+            ],
+            [
+              -2.606979,
+              53.674928
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "42",
+      "properties": {
+        "maxtemp - 20y max": 39,
+        "avgtemp - 20y max": 30,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 20,
+        "impact: -Solar PV ": 7,
+        "impact: -Transformers ": 19,
+        "impact: -Overhead Lines ": 21,
+        "impact: -Demand ": 57
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.698717,
+              53.676089
+            ],
+            [
+              -0.79058,
+              53.670363
+            ],
+            [
+              -0.774887,
+              54.209506
+            ],
+            [
+              -1.69481,
+              54.215345
+            ],
+            [
+              -1.698717,
+              53.676089
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "43",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 53
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.79058,
+              53.670363
+            ],
+            [
+              0.117056,
+              53.657755
+            ],
+            [
+              0.144512,
+              54.196648
+            ],
+            [
+              -0.774887,
+              54.209506
+            ],
+            [
+              -0.79058,
+              53.670363
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "44",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 51
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.115992,
+              54.060083
+            ],
+            [
+              -7.203358,
+              54.103155
+            ],
+            [
+              -7.271889,
+              54.640127
+            ],
+            [
+              -8.19637,
+              54.5962
+            ],
+            [
+              -8.115992,
+              54.060083
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "45",
+      "properties": {
+        "maxtemp - 20y max": 38,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 18,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 52
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.203358,
+              54.103155
+            ],
+            [
+              -6.288525,
+              54.139309
+            ],
+            [
+              -6.34511,
+              54.677
+            ],
+            [
+              -7.271889,
+              54.640127
+            ],
+            [
+              -7.203358,
+              54.103155
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "46",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 17,
+        "impact: -Demand ": 54
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.288525,
+              54.139309
+            ],
+            [
+              -5.371873,
+              54.168511
+            ],
+            [
+              -5.416428,
+              54.706783
+            ],
+            [
+              -6.34511,
+              54.677
+            ],
+            [
+              -6.288525,
+              54.139309
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "47",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 51
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.534652,
+              54.205954
+            ],
+            [
+              -2.614862,
+              54.214161
+            ],
+            [
+              -2.623008,
+              54.753345
+            ],
+            [
+              -3.55497,
+              54.744974
+            ],
+            [
+              -3.534652,
+              54.205954
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "48",
+      "properties": {
+        "maxtemp - 20y max": 39,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 19,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 54
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.614862,
+              54.214161
+            ],
+            [
+              -1.69481,
+              54.215345
+            ],
+            [
+              -1.690771,
+              54.754553
+            ],
+            [
+              -2.623008,
+              54.753345
+            ],
+            [
+              -2.614862,
+              54.214161
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "49",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 52
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.69481,
+              54.215345
+            ],
+            [
+              -0.774887,
+              54.209506
+            ],
+            [
+              -0.75867,
+              54.748597
+            ],
+            [
+              -1.690771,
+              54.754553
+            ],
+            [
+              -1.69481,
+              54.215345
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "50",
+      "properties": {
+        "maxtemp - 20y max": 38,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 18,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 50
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.271889,
+              54.640127
+            ],
+            [
+              -6.34511,
+              54.677
+            ],
+            [
+              -6.403597,
+              55.214602
+            ],
+            [
+              -7.342719,
+              55.176991
+            ],
+            [
+              -7.271889,
+              54.640127
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "51",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 53
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.34511,
+              54.677
+            ],
+            [
+              -5.416428,
+              54.706783
+            ],
+            [
+              -5.462485,
+              55.244983
+            ],
+            [
+              -6.403597,
+              55.214602
+            ],
+            [
+              -6.34511,
+              54.677
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "52",
+      "properties": {
+        "maxtemp - 20y max": 34,
+        "avgtemp - 20y max": 27,
+        "impact: -Gas ": 14,
+        "impact: -Nuclear ": 14,
+        "impact: -Solar PV ": 4,
+        "impact: -Transformers ": 14,
+        "impact: -Overhead Lines ": 14,
+        "impact: -Demand ": 47
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.416428,
+              54.706783
+            ],
+            [
+              -4.486247,
+              54.729449
+            ],
+            [
+              -4.519803,
+              55.268104
+            ],
+            [
+              -5.462485,
+              55.244983
+            ],
+            [
+              -5.416428,
+              54.706783
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "53",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 15,
+        "impact: -Solar PV ": 4,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.486247,
+              54.729449
+            ],
+            [
+              -3.55497,
+              54.744974
+            ],
+            [
+              -3.575975,
+              55.283941
+            ],
+            [
+              -4.519803,
+              55.268104
+            ],
+            [
+              -4.486247,
+              54.729449
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "54",
+      "properties": {
+        "maxtemp - 20y max": 38,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 18,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 51
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.55497,
+              54.744974
+            ],
+            [
+              -2.623008,
+              54.753345
+            ],
+            [
+              -2.63143,
+              55.29248
+            ],
+            [
+              -3.575975,
+              55.283941
+            ],
+            [
+              -3.55497,
+              54.744974
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "55",
+      "properties": {
+        "maxtemp - 20y max": 38,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 18,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 18,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 52
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.623008,
+              54.753345
+            ],
+            [
+              -1.690771,
+              54.754553
+            ],
+            [
+              -1.686596,
+              55.293712
+            ],
+            [
+              -2.63143,
+              55.29248
+            ],
+            [
+              -2.623008,
+              54.753345
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "56",
+      "properties": {
+        "maxtemp - 20y max": 34,
+        "avgtemp - 20y max": 27,
+        "impact: -Gas ": 14,
+        "impact: -Nuclear ": 14,
+        "impact: -Solar PV ": 4,
+        "impact: -Transformers ": 14,
+        "impact: -Overhead Lines ": 14,
+        "impact: -Demand ": 47
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.462485,
+              55.244983
+            ],
+            [
+              -4.519803,
+              55.268104
+            ],
+            [
+              -4.554505,
+              55.806696
+            ],
+            [
+              -5.510112,
+              55.783108
+            ],
+            [
+              -5.462485,
+              55.244983
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "57",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 50
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.519803,
+              55.268104
+            ],
+            [
+              -3.575975,
+              55.283941
+            ],
+            [
+              -3.597698,
+              55.822855
+            ],
+            [
+              -4.554505,
+              55.806696
+            ],
+            [
+              -4.519803,
+              55.268104
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "58",
+      "properties": {
+        "maxtemp - 20y max": 38,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 18,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.575975,
+              55.283941
+            ],
+            [
+              -2.63143,
+              55.29248
+            ],
+            [
+              -2.640139,
+              55.831567
+            ],
+            [
+              -3.597698,
+              55.822855
+            ],
+            [
+              -3.575975,
+              55.283941
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "59",
+      "properties": {
+        "maxtemp - 20y max": 38,
+        "avgtemp - 20y max": 29,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 19,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 18,
+        "impact: -Overhead Lines ": 20,
+        "impact: -Demand ": 52
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.63143,
+              55.29248
+            ],
+            [
+              -1.686596,
+              55.293712
+            ],
+            [
+              -1.682279,
+              55.832824
+            ],
+            [
+              -2.640139,
+              55.831567
+            ],
+            [
+              -2.63143,
+              55.29248
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "60",
+      "properties": {
+        "maxtemp - 20y max": 34,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 14,
+        "impact: -Nuclear ": 14,
+        "impact: -Solar PV ": 4,
+        "impact: -Transformers ": 14,
+        "impact: -Overhead Lines ": 14,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.510112,
+              55.783108
+            ],
+            [
+              -4.554505,
+              55.806696
+            ],
+            [
+              -4.590407,
+              56.345227
+            ],
+            [
+              -5.559384,
+              56.321158
+            ],
+            [
+              -5.510112,
+              55.783108
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "61",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 27,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.554505,
+              55.806696
+            ],
+            [
+              -3.597698,
+              55.822855
+            ],
+            [
+              -3.620172,
+              56.361715
+            ],
+            [
+              -4.590407,
+              56.345227
+            ],
+            [
+              -4.554505,
+              55.806696
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "62",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 27,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 15,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 45
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.597698,
+              55.822855
+            ],
+            [
+              -2.640139,
+              55.831567
+            ],
+            [
+              -2.64915,
+              56.370604
+            ],
+            [
+              -3.620172,
+              56.361715
+            ],
+            [
+              -3.597698,
+              55.822855
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "63",
+      "properties": {
+        "maxtemp - 20y max": 34,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 14,
+        "impact: -Nuclear ": 14,
+        "impact: -Solar PV ": 4,
+        "impact: -Transformers ": 14,
+        "impact: -Overhead Lines ": 14,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.526639,
+              56.289534
+            ],
+            [
+              -5.559384,
+              56.321158
+            ],
+            [
+              -5.61038,
+              56.859132
+            ],
+            [
+              -6.591386,
+              56.826859
+            ],
+            [
+              -6.526639,
+              56.289534
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "64",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.559384,
+              56.321158
+            ],
+            [
+              -4.590407,
+              56.345227
+            ],
+            [
+              -4.627567,
+              56.883695
+            ],
+            [
+              -5.61038,
+              56.859132
+            ],
+            [
+              -5.559384,
+              56.321158
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "65",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 17,
+        "impact: -Nuclear ": 18,
+        "impact: -Solar PV ": 6,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.590407,
+              56.345227
+            ],
+            [
+              -3.620172,
+              56.361715
+            ],
+            [
+              -3.643435,
+              56.900521
+            ],
+            [
+              -4.627567,
+              56.883695
+            ],
+            [
+              -4.590407,
+              56.345227
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "66",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 27,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 17,
+        "impact: -Demand ": 45
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.620172,
+              56.361715
+            ],
+            [
+              -2.64915,
+              56.370604
+            ],
+            [
+              -2.658477,
+              56.909594
+            ],
+            [
+              -3.643435,
+              56.900521
+            ],
+            [
+              -3.620172,
+              56.361715
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "67",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.61038,
+              56.859132
+            ],
+            [
+              -4.627567,
+              56.883695
+            ],
+            [
+              -4.666046,
+              57.422099
+            ],
+            [
+              -5.663183,
+              57.397028
+            ],
+            [
+              -5.61038,
+              56.859132
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "68",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.627567,
+              56.883695
+            ],
+            [
+              -3.643435,
+              56.900521
+            ],
+            [
+              -3.667525,
+              57.439275
+            ],
+            [
+              -4.666046,
+              57.422099
+            ],
+            [
+              -4.627567,
+              56.883695
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "69",
+      "properties": {
+        "maxtemp - 20y max": 36,
+        "avgtemp - 20y max": 27,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 16,
+        "impact: -Overhead Lines ": 17,
+        "impact: -Demand ": 45
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.643435,
+              56.900521
+            ],
+            [
+              -2.658477,
+              56.909594
+            ],
+            [
+              -2.668136,
+              57.448536
+            ],
+            [
+              -3.667525,
+              57.439275
+            ],
+            [
+              -3.643435,
+              56.900521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "70",
+      "properties": {
+        "maxtemp - 20y max": 37,
+        "avgtemp - 20y max": 26,
+        "impact: -Gas ": 16,
+        "impact: -Nuclear ": 17,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 17,
+        "impact: -Overhead Lines ": 18,
+        "impact: -Demand ": 44
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.658477,
+              56.909594
+            ],
+            [
+              -1.673187,
+              56.910903
+            ],
+            [
+              -1.668399,
+              57.449872
+            ],
+            [
+              -2.668136,
+              57.448536
+            ],
+            [
+              -2.658477,
+              56.909594
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "71",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 49
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.663183,
+              57.397028
+            ],
+            [
+              -4.666046,
+              57.422099
+            ],
+            [
+              -4.70591,
+              57.960441
+            ],
+            [
+              -5.717884,
+              57.934846
+            ],
+            [
+              -5.663183,
+              57.397028
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "72",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 27,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 47
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.666046,
+              57.422099
+            ],
+            [
+              -3.667525,
+              57.439275
+            ],
+            [
+              -3.692482,
+              57.977975
+            ],
+            [
+              -4.70591,
+              57.960441
+            ],
+            [
+              -4.666046,
+              57.422099
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "73",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 26,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 15,
+        "impact: -Solar PV ": 4,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 15,
+        "impact: -Demand ": 43
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.667525,
+              57.439275
+            ],
+            [
+              -2.668136,
+              57.448536
+            ],
+            [
+              -2.678143,
+              57.98743
+            ],
+            [
+              -3.692482,
+              57.977975
+            ],
+            [
+              -3.667525,
+              57.439275
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "74",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.717884,
+              57.934846
+            ],
+            [
+              -4.70591,
+              57.960441
+            ],
+            [
+              -4.74723,
+              58.498718
+            ],
+            [
+              -5.774578,
+              58.472583
+            ],
+            [
+              -5.717884,
+              57.934846
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "75",
+      "properties": {
+        "maxtemp - 20y max": 35,
+        "avgtemp - 20y max": 28,
+        "impact: -Gas ": 15,
+        "impact: -Nuclear ": 16,
+        "impact: -Solar PV ": 5,
+        "impact: -Transformers ": 15,
+        "impact: -Overhead Lines ": 16,
+        "impact: -Demand ": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -4.70591,
+              57.960441
+            ],
+            [
+              -3.692482,
+              57.977975
+            ],
+            [
+              -3.718352,
+              58.516623
+            ],
+            [
+              -4.74723,
+              58.498718
+            ],
+            [
+              -4.70591,
+              57.960441
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

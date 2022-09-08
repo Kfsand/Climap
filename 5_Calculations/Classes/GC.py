@@ -77,7 +77,9 @@ class GComponent:
         minimpact=round(np.min(self.impact_arrays["max impact"]),2)
         maximpact=round(np.max(self.impact_arrays["max impact"]),2)
         avgimpact=round(np.mean(self.impact_arrays["max impact"]),2)
+        p90impact=round(np.percentile(self.impact_arrays["max impact"],90),2)
+        #np.percentile(self.untreated_array,90,axis=0)
 
-        return [minimpact, maximpact, avgimpact]
+        return [minimpact, maximpact, avgimpact, p90impact]
 
 

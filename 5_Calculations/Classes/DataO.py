@@ -351,7 +351,7 @@ class DataObject:
                 #2. multiplying data and bool arrays -> only values above threshold non null
                 data_array=np.multiply(self.p90_array,bool_array)
 
-                #3. passing on to impact calcualtions
+                #3. passing on to impact calculations
                 return  data_array
 
     def islarger(self,array3D, threshold):
