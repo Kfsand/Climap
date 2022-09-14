@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Bootstrap demo</title>
+        <title>Progress file</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
        
@@ -23,7 +23,8 @@
 
 
   <body>
-    <div id="map"></div>
+    <div id="map" data-gc="Maxtemp">
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -48,15 +49,16 @@
     </div>
 
     <div id="menu">
-        <select class="dropdown" onchange="changeMap()">
-            <option value="" disabled="" selected="" hidden="">Select Grid Component</option>
-            <option value="Gas">Gas</option>
-            <option value="Nuclear">Nuclear</option>
-            <option value="Hydro">Hydroelectric Generation</option>
-            <option value="Solar">Solar PV</option>
-            <option value="Transformers">Transformers</option>
-            <option value="OLines">Overhead lines</option>
-            <option value="Demand">aily Peak Demand</option>
+        <select id="dropdown" onchange="changeMap()">
+            <option value="" disabled="" selected="" hidden="">Select Visualisation</option>
+            <option value="Maxtemp">Maximum Temperature (°C)</option>
+            <option value="Gas">Gas capacity loss (% of rated)</option>
+            <option value="Nuclear">Nuclear capacity loss (% of rated)</option>
+            <option value="Hydro">Hydroelectric capacity loss (% of rated)</option>
+            <option value="Solar">Solar PV capacity loss (% of rated)</option>
+            <option value="Transformers">Transformers capacity loss (% of rated)</option>
+            <option value="OLines">Overhead lines carrying capacity loss (% of rated)</option>
+            <option value="Demand">Daily Peak Demand increase (% of spring average)</option>
         </select>
     </div>
     
@@ -64,9 +66,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script>
         L.mapbox.accessToken = 'pk.eyJ1Ijoia2ZzYW5kIiwiYSI6ImNsNTliaHltZzI5dTAzcHQ3b2dhOTFjaTAifQ.vb0ojGjuynKCLg7K2CNMaA';
-          var map = L.mapbox.map('map')
-            .setView([54.729449,-4.519803], 6)
-            .addLayer(L.mapbox.styleLayer('mapbox://styles/kfsand/cl6z3o0g1000v15l6vde2mse2'));
+
+        var style_url ='mapbox://styles/kfsand/cl6z3o0g1000v15l6vde2mse2'
+        var map = L.mapbox.map('map')
+          .setView([54.729449,-4.519803], 6)
+          .addLayer(L.mapbox.styleLayer(style_url));
         show()
     </script>
 </body>
