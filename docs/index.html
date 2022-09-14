@@ -51,13 +51,24 @@
     <div id="menu">
         <select id="dropdown" onchange="changeMap()">
             <option value="" disabled="" selected="" hidden="">Select Visualisation</option>
-            <option value="Maxtemp">Maximum Temperature (°C)</option>
-            <option value="Gas">Gas capacity loss (% of rated)</option>
-            <option value="Nuclear">Nuclear capacity loss (% of rated)</option>
-            <option value="Solar">Solar PV capacity loss (% of rated)</option>
-            <option value="Transformers">Transformers capacity loss (% of rated)</option>
-            <option value="OLines">Overhead lines carrying capacity loss (% of rated)</option>
-            <option value="Demand">Daily Peak Demand increase (% of spring average)</option>
+            <optgroup label="Mid-century (2030-2050)">
+              <option value="Maxtemp1">Maximum Temperature (°C)</option>
+              <option value="Gas1">Gas capacity loss (% of rated)</option>
+              <option value="Nuclear1">Nuclear capacity loss (% of rated)</option>
+              <option value="Solar1">Solar Photovoltaic capacity loss (% of rated)</option>
+              <option value="Transformers1">Transformers capacity loss (% of rated)</option>
+              <option value="OLines1">Overhead lines carrying capacity loss (% of rated)</option>
+              <option value="Demand1">Daily Peak Demand increase (% of spring average)</option>
+          </optgroup>
+          <optgroup label="End-of-century (2080-2099)">
+            <option value="Maxtemp2">Maximum Temperature (°C)</option>
+            <option value="Gas2">Gas capacity loss (% of rated)</option>
+            <option value="Nuclear2">Nuclear capacity loss (% of rated)</option>
+            <option value="Solar2">Solar Photovoltaic capacity loss (% of rated)</option>
+            <option value="Transformers2">Transformers capacity loss (% of rated)</option>
+            <option value="OLines2">Overhead lines carrying capacity loss (% of rated)</option>
+            <option value="Demand2">Daily Peak Demand increase (% of spring average)</option>
+        </optgroup>
         </select>
     </div>
     
