@@ -65,7 +65,7 @@ function geturl(){
         console.log(" setting Transformer style")
     }
     if(val == "OLines"){
-        style_url='mapbox://styles/kfsand/cl6z5ave4001e15qmbipd1i03'
+        style_url='mapbox://styles/kfsand/cl6z4ysgt000t15nohh32qpn9'
         console.log(" setting OLines style")
     }
     if(val == "Demand"){
