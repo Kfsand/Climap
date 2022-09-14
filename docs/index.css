@@ -15,6 +15,7 @@ body { height: 100%; margin: 0; padding: 0; }
     position: absolute;
     width: 300px;
     height: 146px;
-    left: 100px;
-    top: calc(50% - 320px/2 - 122.5px);   
+    left: calc(10% - 109px/2 + 13px);
+    top: 200px; 
+
 }
