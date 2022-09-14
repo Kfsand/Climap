@@ -45,31 +45,32 @@ function geturl(){
     }
 
     if(val == "Nuclear")
-    {    alert(" setting Nuclear style")
+    {
         style_url='mapbox://styles/kfsand/cl6z56rit00p014pdr7h1ipi6'
+        console.log(" setting Nuclear style")
     }
 
     if(val == "Hydro")
     {
-        alert(" setting Hydro style")
         style_url='mapbox://styles/kfsand/cl6z3o0g1000v15l6vde2mse2'
+        console.log(" setting Hydro style")
     } 
 
     if(val == "Solar"){
-        alert(" setting Solar style")
         style_url='mapbox://styles/kfsand/cl6z4pzgb000i14kzusgkll7k'
+        console.log(" setting Solar style")
     }
     if(val == "Transformers"){
-        alert(" setting Transformers style")
         style_url='mapbox://styles/kfsand/cl6z4tlro000q14nsvimdc2mc'
+        console.log(" setting Transformer style")
     }
     if(val == "OLines"){
-        alert(" setting OLines style")
         style_url='mapbox://styles/kfsand/cl6z5ave4001e15qmbipd1i03'
+        console.log(" setting OLines style")
     }
     if(val == "Demand"){
-        alert(" setting Demand style")
         style_url='mapbox://styles/kfsand/cl6z5ave4001e15qmbipd1i03'
+        console.log(" setting Demand style")
     }
     return style_url;
 }
