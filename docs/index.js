@@ -50,12 +50,6 @@ function geturl(){
         console.log(" setting Nuclear style")
     }
 
-    if(val == "Hydro")
-    {
-        style_url='mapbox://styles/kfsand/cl6z3o0g1000v15l6vde2mse2'
-        console.log(" setting Hydro style")
-    } 
-
     if(val == "Solar"){
         style_url='mapbox://styles/kfsand/cl6z4pzgb000i14kzusgkll7k'
         console.log(" setting Solar style")
