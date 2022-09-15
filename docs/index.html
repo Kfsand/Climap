@@ -81,6 +81,7 @@
         var map = L.mapbox.map('map')
           .setView([54.729449,-4.519803], 6)
           .addLayer(L.mapbox.styleLayer(style_url));
+        new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
         show()
     </script>
 </body>
